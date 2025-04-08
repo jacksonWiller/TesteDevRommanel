@@ -31,13 +31,15 @@ namespace Clientes.Dominio.Entidades
             Isento = isento;
         }
 
-        public void AtualizarDados(string nome, DateTime dataNascimento,
-                                 Telefone telefone, Endereco endereco,
-                                 string inscricaoEstadual = null, bool isento = false)
+        public void AtualizarDados(string nome, Documento documento, DateTime dataNascimento,
+                      Telefone telefone, Email email, Endereco endereco,
+                      string inscricaoEstadual = null, bool isento = false)
         {
             Nome = nome;
+            Documento = documento;
             DataNascimento = dataNascimento;
             Telefone = telefone;
+            Email = email;
             Endereco = endereco;
             InscricaoEstadual = inscricaoEstadual;
             Isento = isento;

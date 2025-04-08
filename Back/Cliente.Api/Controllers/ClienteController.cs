@@ -1,5 +1,7 @@
-﻿using Clientes.Api.Models;
-using Clientes.Aplicacao.Commands;
+﻿using Clientes.Api.Extensions;
+using Clientes.Api.Models;
+using Clientes.Aplicacao.Commands.CreateCliente;
+using Clientes.Aplicacao.Commands.UpadateCliente;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
