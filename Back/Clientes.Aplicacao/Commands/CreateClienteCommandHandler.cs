@@ -1,12 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ardalis.Result;
+using Ardalis.Result.FluentValidation;
+using Clientes.Dominio.Entidade;
+using Clientes.Dominio.ObjetosDeValor;
+using FluentValidation;
+using MediatR;
 
-namespace Clientes.Aplicacao.Commands
+namespace Clientes.Aplicacao.Commands;
+
+public class CreateClienteCommandHandler : IRequestHandler<CreateClienteCommand, Result<CreateClienteResponse>>
 {
-    internal class CreateClienteCommandHandler
+    private readonly IValidator<CreateClienteCommand> _validator;
+
+    public CreateClienteCommandHandler(
+        IValidator<CreateClienteCommand> validator
+    )
     {
+        _validator = validator;
+    }
+
+    public async Task<Result<CreateClienteResponse>> Handle(CreateClienteCommand command, CancellationToken cancellationToken)
+    {
+        var validationResult = await _validator.ValidateAsync(command, cancellationToken);
+        if (!validationResult.IsValid)
+        {
+            return Result<CreateClienteResponse>.Invalid(validationResult.AsErrors());
+        }
+
+        var documento = new Documento(command.Documento, command.TipoDocumento);
+        var telefone = new Telefone(command.Telefone);
+        var email = new Email(command.Email);
+        var endereco = new Endereco(command.Cep, command.Logradouro, command.Numero,
+                                   command.Bairro, command.Cidade, command.Estado);
+
+        var cliente = new Cliente(command.Nome, documento, command.DataNascimento,
+                                telefone, email, endereco, command.InscricaoEstadual, command.Isento);
+
+
+        var response = new CreateClienteResponse(cliente.Id);
+        return Result<CreateClienteResponse>.Success((CreateClienteResponse)response, "Product created successfully.");
     }
 }

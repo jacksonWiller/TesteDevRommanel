@@ -7,6 +7,9 @@ namespace Clientes.Dominio.Entidade
 {
     public class EntidadeBase
     {
+
+        private readonly List<BaseEvent> _domainEvents = [];
+
         [NotMapped] 
         public FluentValidation.Results.ValidationResult ValidationResult { get; private set; } = new FluentValidation.Results.ValidationResult();
 
@@ -20,5 +23,8 @@ namespace Clientes.Dominio.Entidade
         {
             return ValidationResult?.Errors.Select(e => e.ErrorMessage) ?? [];
         }
+
+        protected void AddDomainEvent(BaseEvent domainEvent) =>
+            _domainEvents.Add(domainEvent);
     }
 }

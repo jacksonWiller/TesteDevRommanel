@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Clientes.Aplicacao.Commands
 {
-    internal class CreateProductCommandValidator
+    public class CreateClienteResponse(Guid id)
     {
+        public Guid Id { get; } = id;
     }
 }

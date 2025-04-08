@@ -2,17 +2,16 @@
 
 namespace Clientes.Dominio.Eventos
 {
-    public abstract class ClienteBaseEvent
+    public abstract class BaseEvent
     {
         public Guid ClienteId { get; private set; }
         public DateTime DataOcorrencia { get; private set; }
         public Cliente Cliente { get; private set; }
 
-        public ClienteBaseEvent(Cliente cliente)
+        public BaseEvent(EntidadeBase entidade)
         {
-            ClienteId = cliente.Id;
+            ClienteId = entidade.Id;
             DataOcorrencia = DateTime.Now;
-            Cliente = cliente;
         }
     }
 }

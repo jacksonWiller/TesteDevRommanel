@@ -1,8 +1,10 @@
-﻿using Clientes.Dominio.ObjetosDeValor;
+﻿using Ardalis.Result;
+using Clientes.Dominio.ObjetosDeValor;
+using MediatR;
 
 namespace Clientes.Aplicacao.Commands
 {
-    public class CreateClienteCommand
+    public class CreateClienteCommand : IRequest<Result<CreateClienteResponse>>
     {
         public string Nome { get; set; }
         public string Documento { get; set; }
