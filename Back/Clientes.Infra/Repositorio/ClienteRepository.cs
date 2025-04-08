@@ -1,4 +1,5 @@
-﻿using Clientes.Dominio.Entidades;
+﻿using Clientes.Dominio.Dtos;
+using Clientes.Dominio.Entidades;
 using Clientes.Dominio.Interfaces;
 using Clientes.Infra.Contexto;
 using Fop;
@@ -16,7 +17,7 @@ namespace Clientes.Infra.Repositorios
             _dataContext = dataContext;
         }
 
-        public async Task<IList<Cliente>> GetAllClientesAsync(
+        public async Task<List<ClienteDto>> GetAllClientesAsync(
             string filter = null,
             string order = null,
             int pageNumber = 1,
@@ -32,7 +33,30 @@ namespace Clientes.Infra.Repositorios
                 .AsNoTracking()
                 .ApplyFop(fopRequest);
 
-            return await filteredClientes.ToListAsync();
+            var clientesLista = await filteredClientes.ToListAsync();
+
+            var clientesListaDto = new List<ClienteDto>();
+
+            clientesListaDto = clientesLista?.Select(c => new ClienteDto
+            {
+                Id = c.Id,
+                Nome = c.Nome,
+                Documento = c.Documento.Numero,
+                TipoDocumento = c.Documento.Tipo,
+                DataNascimento = c.DataNascimento,
+                Telefone = c.Telefone.Numero,
+                Email = c.Email.Endereco,
+                Cep = c.Endereco.Cep,
+                Logradouro = c.Endereco.Logradouro,
+                Numero = c.Endereco.Numero,
+                Bairro = c.Endereco.Bairro,
+                Cidade = c.Endereco.Cidade,
+                Estado = c.Endereco.Estado,
+                InscricaoEstadual = c.InscricaoEstadual,
+                Isento = c.Isento
+            }).ToList();
+
+            return clientesListaDto;
         }
 
         public async Task<Cliente[]> GetClientesByNomeAsync(string nome)

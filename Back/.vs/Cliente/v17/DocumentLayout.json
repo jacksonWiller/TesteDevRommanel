@@ -3,24 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4F45CA2-DC2F-4881-86BD-13B10149AD5D}|Clientes.Infra\\Clientes.Infra.csproj|c:\\users\\jacks\\desktop\\testedevrommanel\\back\\clientes.infra\\repositorio\\clienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4F45CA2-DC2F-4881-86BD-13B10149AD5D}|Clientes.Infra\\Clientes.Infra.csproj|solutionrelative:clientes.infra\\repositorio\\clienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|c:\\users\\jacks\\desktop\\testedevrommanel\\back\\clientes.aplicacao\\queries\\getallclientesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|solutionrelative:clientes.aplicacao\\queries\\getallclientesqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4F45CA2-DC2F-4881-86BD-13B10149AD5D}|Clientes.Infra\\Clientes.Infra.csproj|c:\\users\\jacks\\desktop\\testedevrommanel\\back\\clientes.infra\\repositorio\\clienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4F45CA2-DC2F-4881-86BD-13B10149AD5D}|Clientes.Infra\\Clientes.Infra.csproj|solutionrelative:clientes.infra\\repositorio\\clienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{7ED48D9C-B656-4B95-A194-F9EE5073D06B}|Cliente.Dominio\\Clientes.Dominio.csproj|c:\\users\\jacks\\desktop\\testedevrommanel\\back\\cliente.dominio\\interfaces\\iclienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7ED48D9C-B656-4B95-A194-F9EE5073D06B}|Cliente.Dominio\\Clientes.Dominio.csproj|solutionrelative:cliente.dominio\\interfaces\\iclienterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|c:\\users\\jacks\\desktop\\testedevrommanel\\back\\clientes.aplicacao\\queries\\getallclientesqueryvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|solutionrelative:clientes.aplicacao\\queries\\getallclientesqueryvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|c:\\users\\jacks\\desktop\\testedevrommanel\\back\\clientes.aplicacao\\queries\\getallclientesqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|solutionrelative:clientes.aplicacao\\queries\\getallclientesqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|c:\\users\\jacks\\desktop\\testedevrommanel\\back\\clientes.aplicacao\\commands\\createcliente\\createclientecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|solutionrelative:clientes.aplicacao\\commands\\createcliente\\createclientecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|c:\\users\\jacks\\desktop\\testedevrommanel\\back\\clientes.aplicacao\\commands\\createcliente\\createclientecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|solutionrelative:clientes.aplicacao\\commands\\createcliente\\createclientecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|c:\\users\\jacks\\desktop\\testedevrommanel\\back\\clientes.aplicacao\\queries\\getallclientesqueryvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|solutionrelative:clientes.aplicacao\\queries\\getallclientesqueryvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|c:\\users\\jacks\\desktop\\testedevrommanel\\back\\clientes.aplicacao\\commands\\createcliente\\createclientecommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -29,10 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|c:\\users\\jacks\\desktop\\testedevrommanel\\back\\clientes.aplicacao\\commands\\upadatecliente\\updateclientecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|solutionrelative:clientes.aplicacao\\commands\\upadatecliente\\updateclientecommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|c:\\users\\jacks\\desktop\\testedevrommanel\\back\\clientes.aplicacao\\queries\\getallclientesqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|solutionrelative:clientes.aplicacao\\queries\\getallclientesqueryresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|c:\\users\\jacks\\desktop\\testedevrommanel\\back\\clientes.aplicacao\\commands\\upadatecliente\\updateclientecommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -69,10 +73,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{7ED48D9C-B656-4B95-A194-F9EE5073D06B}|Cliente.Dominio\\Clientes.Dominio.csproj|c:\\users\\jacks\\desktop\\testedevrommanel\\back\\cliente.dominio\\objetosdevalor\\email.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{7ED48D9C-B656-4B95-A194-F9EE5073D06B}|Cliente.Dominio\\Clientes.Dominio.csproj|solutionrelative:cliente.dominio\\objetosdevalor\\email.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|c:\\users\\jacks\\desktop\\testedevrommanel\\back\\clientes.aplicacao\\commands\\createcliente\\createclientecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5607B2BE-5D7E-4A39-97FC-19003E958829}|Clientes.Aplicacao\\Clientes.Aplicacao.csproj|solutionrelative:clientes.aplicacao\\commands\\createcliente\\createclientecommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A5EBD78F-7982-436D-8A4B-68FF9288C3F0}|Cliente.Api\\Clientes.Api.csproj|c:\\users\\jacks\\desktop\\testedevrommanel\\back\\cliente.api\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -194,7 +194,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -206,20 +206,46 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ClienteRepository.cs",
+              "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Infra\\Repositorio\\ClienteRepository.cs",
+              "RelativeDocumentMoniker": "Clientes.Infra\\Repositorio\\ClienteRepository.cs",
+              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Infra\\Repositorio\\ClienteRepository.cs",
+              "RelativeToolTip": "Clientes.Infra\\Repositorio\\ClienteRepository.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAgwDgAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T05:58:27.34Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GetAllClientesQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Queries\\GetAllClientesQueryHandler.cs",
+              "RelativeDocumentMoniker": "Clientes.Aplicacao\\Queries\\GetAllClientesQueryHandler.cs",
+              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Queries\\GetAllClientesQueryHandler.cs",
+              "RelativeToolTip": "Clientes.Aplicacao\\Queries\\GetAllClientesQueryHandler.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAowCIAAAAHAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T08:14:21.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
               "Title": "CreateClienteCommandHandler.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\CreateCliente\\CreateClienteCommandHandler.cs",
               "RelativeDocumentMoniker": "Clientes.Aplicacao\\Commands\\CreateCliente\\CreateClienteCommandHandler.cs",
               "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\CreateCliente\\CreateClienteCommandHandler.cs",
               "RelativeToolTip": "Clientes.Aplicacao\\Commands\\CreateCliente\\CreateClienteCommandHandler.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAowDoAAAAIAAAA",
+              "ViewState": "AQIAACEAAAAAAAAAAAAowDUAAAAnAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-08T04:48:44.635Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "GetAllClientesQueryValidator.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Queries\\GetAllClientesQueryValidator.cs",
               "RelativeDocumentMoniker": "Clientes.Aplicacao\\Queries\\GetAllClientesQueryValidator.cs",
@@ -232,59 +258,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CreateClienteCommandValidator.cs",
-              "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\CreateCliente\\CreateClienteCommandValidator.cs",
-              "RelativeDocumentMoniker": "Clientes.Aplicacao\\Commands\\CreateCliente\\CreateClienteCommandValidator.cs",
-              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\CreateCliente\\CreateClienteCommandValidator.cs",
-              "RelativeToolTip": "Clientes.Aplicacao\\Commands\\CreateCliente\\CreateClienteCommandValidator.cs",
-              "ViewState": "AQIAAB8AAAAAAAAAAAAgwBgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T04:49:22.178Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ClienteRepository.cs",
-              "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Infra\\Repositorio\\ClienteRepository.cs",
-              "RelativeDocumentMoniker": "Clientes.Infra\\Repositorio\\ClienteRepository.cs",
-              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Infra\\Repositorio\\ClienteRepository.cs",
-              "RelativeToolTip": "Clientes.Infra\\Repositorio\\ClienteRepository.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABcAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T05:58:27.34Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GetAllClientesQueryHandler.cs",
-              "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Queries\\GetAllClientesQueryHandler.cs",
-              "RelativeDocumentMoniker": "Clientes.Aplicacao\\Queries\\GetAllClientesQueryHandler.cs",
-              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Queries\\GetAllClientesQueryHandler.cs",
-              "RelativeToolTip": "Clientes.Aplicacao\\Queries\\GetAllClientesQueryHandler.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAACIAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T08:14:21.945Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "IClienteRepository.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Cliente.Dominio\\Interfaces\\IClienteRepository.cs",
               "RelativeDocumentMoniker": "Cliente.Dominio\\Interfaces\\IClienteRepository.cs",
               "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Cliente.Dominio\\Interfaces\\IClienteRepository.cs",
               "RelativeToolTip": "Cliente.Dominio\\Interfaces\\IClienteRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAoAAAA6AAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAcAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-08T06:06:32.155Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "GetAllClientesQueryResponse.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Queries\\GetAllClientesQueryResponse.cs",
               "RelativeDocumentMoniker": "Clientes.Aplicacao\\Queries\\GetAllClientesQueryResponse.cs",
@@ -297,72 +284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ClienteContext.cs",
-              "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Infra\\Contexto\\ClienteContext.cs",
-              "RelativeDocumentMoniker": "Clientes.Infra\\Contexto\\ClienteContext.cs",
-              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Infra\\Contexto\\ClienteContext.cs",
-              "RelativeToolTip": "Clientes.Infra\\Contexto\\ClienteContext.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAgAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T05:50:15.543Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UpdateClienteCommandHandler.cs",
-              "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateClienteCommandHandler.cs",
-              "RelativeDocumentMoniker": "Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateClienteCommandHandler.cs",
-              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateClienteCommandHandler.cs",
-              "RelativeToolTip": "Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateClienteCommandHandler.cs",
-              "ViewState": "AQIAABgAAAAAAAAAAAAowEwAAABkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T07:14:25.902Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UpdateClienteCommandValidator.cs",
-              "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateClienteCommandValidator.cs",
-              "RelativeDocumentMoniker": "Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateClienteCommandValidator.cs",
-              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateClienteCommandValidator.cs",
-              "RelativeToolTip": "Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateClienteCommandValidator.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T07:19:29.876Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UpdateProductResponse.cs",
-              "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateProductResponse.cs",
-              "RelativeDocumentMoniker": "Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateProductResponse.cs",
-              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateProductResponse.cs",
-              "RelativeToolTip": "Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateProductResponse.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T07:17:01.672Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Documento.cs",
-              "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Cliente.Dominio\\ObjetosDeValor\\Documento.cs",
-              "RelativeDocumentMoniker": "Cliente.Dominio\\ObjetosDeValor\\Documento.cs",
-              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Cliente.Dominio\\ObjetosDeValor\\Documento.cs",
-              "RelativeToolTip": "Cliente.Dominio\\ObjetosDeValor\\Documento.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-08T02:24:24.21Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 5,
               "Title": "CreateClienteCommand.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\CreateCliente\\CreateClienteCommand.cs",
               "RelativeDocumentMoniker": "Clientes.Aplicacao\\Commands\\CreateCliente\\CreateClienteCommand.cs",
@@ -375,7 +297,85 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 7,
+              "Title": "CreateClienteCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\CreateCliente\\CreateClienteCommandValidator.cs",
+              "RelativeDocumentMoniker": "Clientes.Aplicacao\\Commands\\CreateCliente\\CreateClienteCommandValidator.cs",
+              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\CreateCliente\\CreateClienteCommandValidator.cs",
+              "RelativeToolTip": "Clientes.Aplicacao\\Commands\\CreateCliente\\CreateClienteCommandValidator.cs",
+              "ViewState": "AQIAAB8AAAAAAAAAAAAgwBgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T04:49:22.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ClienteContext.cs",
+              "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Infra\\Contexto\\ClienteContext.cs",
+              "RelativeDocumentMoniker": "Clientes.Infra\\Contexto\\ClienteContext.cs",
+              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Infra\\Contexto\\ClienteContext.cs",
+              "RelativeToolTip": "Clientes.Infra\\Contexto\\ClienteContext.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAgAAAAwAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T05:50:15.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "UpdateClienteCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateClienteCommandHandler.cs",
+              "RelativeDocumentMoniker": "Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateClienteCommandHandler.cs",
+              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateClienteCommandHandler.cs",
+              "RelativeToolTip": "Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateClienteCommandHandler.cs",
+              "ViewState": "AQIAABgAAAAAAAAAAAAowEwAAABkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T07:14:25.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UpdateClienteCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateClienteCommandValidator.cs",
+              "RelativeDocumentMoniker": "Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateClienteCommandValidator.cs",
+              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateClienteCommandValidator.cs",
+              "RelativeToolTip": "Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateClienteCommandValidator.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABUAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T07:19:29.876Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "UpdateProductResponse.cs",
+              "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateProductResponse.cs",
+              "RelativeDocumentMoniker": "Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateProductResponse.cs",
+              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateProductResponse.cs",
+              "RelativeToolTip": "Clientes.Aplicacao\\Commands\\UpadateCliente\\UpdateProductResponse.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T07:17:01.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Documento.cs",
+              "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Cliente.Dominio\\ObjetosDeValor\\Documento.cs",
+              "RelativeDocumentMoniker": "Cliente.Dominio\\ObjetosDeValor\\Documento.cs",
+              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Cliente.Dominio\\ObjetosDeValor\\Documento.cs",
+              "RelativeToolTip": "Cliente.Dominio\\ObjetosDeValor\\Documento.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-08T02:24:24.21Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "Telefone.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Cliente.Dominio\\ObjetosDeValor\\Telefone.cs",
               "RelativeDocumentMoniker": "Cliente.Dominio\\ObjetosDeValor\\Telefone.cs",
@@ -388,7 +388,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "Email.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Cliente.Dominio\\ObjetosDeValor\\Email.cs",
               "RelativeDocumentMoniker": "Cliente.Dominio\\ObjetosDeValor\\Email.cs",
@@ -401,7 +401,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "EntidadeBase.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Cliente.Dominio\\Entidades\\EntidadeBase.cs",
               "RelativeDocumentMoniker": "Cliente.Dominio\\Entidades\\EntidadeBase.cs",
@@ -414,7 +414,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "Endereco.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Cliente.Dominio\\Entidades\\Endereco.cs",
               "RelativeDocumentMoniker": "Cliente.Dominio\\Entidades\\Endereco.cs",
@@ -427,7 +427,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "Cliente.cs",
               "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Cliente.Dominio\\Entidades\\Cliente.cs",
               "RelativeDocumentMoniker": "Cliente.Dominio\\Entidades\\Cliente.cs",
@@ -509,8 +509,8 @@
               "Title": "Clientes.Infra",
               "DocumentMoniker": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Infra\\Clientes.Infra.csproj",
               "RelativeDocumentMoniker": "Clientes.Infra\\Clientes.Infra.csproj",
-              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Infra\\Clientes.Infra.csproj*",
-              "RelativeToolTip": "Clientes.Infra\\Clientes.Infra.csproj*",
+              "ToolTip": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Clientes.Infra\\Clientes.Infra.csproj",
+              "RelativeToolTip": "Clientes.Infra\\Clientes.Infra.csproj",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAABaAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-04-08T16:18:25.85Z",

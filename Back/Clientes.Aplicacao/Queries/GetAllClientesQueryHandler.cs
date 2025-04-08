@@ -43,24 +43,7 @@ public class GetAllClientesQueryHandler : IRequestHandler<GetAllClientesQuery, R
         var response = new GetAllClientesQueryResponse
         {
             PagedInfo = pagedInfo,
-            Clientes = clientes?.Select(c => new ClienteDto
-            {
-                Id = c.Id,
-                Nome = c.Nome,
-                Documento = c.Documento.Numero,
-                TipoDocumento = c.Documento.Tipo,
-                DataNascimento = c.DataNascimento,
-                Telefone = c.Telefone.Numero,
-                Email = c.Email.Endereco,
-                Cep = c.Endereco.Cep,
-                Logradouro = c.Endereco.Logradouro,
-                Numero = c.Endereco.Numero,
-                Bairro = c.Endereco.Bairro,
-                Cidade = c.Endereco.Cidade,
-                Estado = c.Endereco.Estado,
-                InscricaoEstadual = c.InscricaoEstadual,
-                Isento = c.Isento
-            }).ToList() ?? []
+            Clientes = clientes
         };
 
         return Result<GetAllClientesQueryResponse>.Success(response, "Clientes retrieved successfully.");
