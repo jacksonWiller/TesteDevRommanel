@@ -2,6 +2,7 @@
 {
     public class Telefone
     {
+        public Guid Id { get; private set; }
         public string Numero { get; private set; }
 
         protected Telefone() { }

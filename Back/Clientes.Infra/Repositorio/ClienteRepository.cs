@@ -81,11 +81,14 @@ namespace Clientes.Infra.Repositorios
         public async Task AdicionarAsync(Cliente cliente)
         {
             _dataContext.Clientes.Add(cliente);
+            await _dataContext.SaveChangesAsync();
         }
 
         public async Task AtualizarAsync(Cliente cliente)
         {
             _dataContext.Clientes.Update(cliente);
+            await _dataContext.SaveChangesAsync();
         }
+
     }
 }

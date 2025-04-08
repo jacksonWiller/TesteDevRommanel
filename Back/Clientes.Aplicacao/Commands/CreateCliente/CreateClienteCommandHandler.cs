@@ -15,6 +15,7 @@ public class CreateClienteCommandHandler : IRequestHandler<CreateClienteCommand,
         IValidator<CreateClienteCommand> validator
     )
     {
+
         _validator = validator;
     }
 
@@ -32,8 +33,17 @@ public class CreateClienteCommandHandler : IRequestHandler<CreateClienteCommand,
         var endereco = new Endereco(command.Cep, command.Logradouro, command.Numero,
                                    command.Bairro, command.Cidade, command.Estado);
 
-        var cliente = new Cliente(command.Nome, documento, command.DataNascimento,
-                                telefone, email, endereco, command.InscricaoEstadual, command.Isento);
+        var cliente = new Cliente(
+            command.Nome, 
+            documento, 
+            command.DataNascimento,
+            telefone, 
+            email, 
+            endereco, 
+            command.InscricaoEstadual, 
+            command.Isento);
+
+
 
 
         var response = new CreateClienteResponse(cliente.Id);

@@ -2,6 +2,7 @@
 {
     public class Documento
     {
+        public Guid Id { get; private set; }
         public string Numero { get; private set; }
         public TipoDocumento Tipo { get; private set; }
 

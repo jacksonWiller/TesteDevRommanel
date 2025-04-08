@@ -8,6 +8,7 @@ namespace Clientes.Dominio.Entidades
     public class EntidadeBase
     {
 
+        [NotMapped]
         private readonly List<EventoBase> _domainEvents = [];
 
         [NotMapped] 

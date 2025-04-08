@@ -2,6 +2,7 @@
 {
     public class Email
     {
+        public Guid Id { get; private set; }
         public string Endereco { get; private set; }
 
         protected Email() { }

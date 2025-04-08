@@ -17,9 +17,13 @@ namespace Clientes.Dominio.Entidades
 
         protected Cliente() { }
 
-        public Cliente(string nome, Documento documento, DateTime dataNascimento,
-                      Telefone telefone, Email email, Endereco endereco,
-                      string inscricaoEstadual = null, bool isento = false)
+        public Cliente(string nome, 
+            Documento documento, 
+            DateTime dataNascimento,
+            Telefone telefone, 
+            Email email, 
+            Endereco endereco,
+            string inscricaoEstadual = null, bool isento = false)
         {
             Id = Guid.NewGuid();
             Nome = nome;
@@ -32,9 +36,14 @@ namespace Clientes.Dominio.Entidades
             Isento = isento;
         }
 
-        public void AtualizarDados(string nome, Documento documento, DateTime dataNascimento,
-                      Telefone telefone, Email email, Endereco endereco,
-                      string inscricaoEstadual = null, bool isento = false)
+        public void AtualizarDados(
+            string nome, 
+            Documento documento, 
+            DateTime dataNascimento,
+            Telefone telefone, 
+            Email email, 
+            Endereco endereco,
+            string inscricaoEstadual = null, bool isento = false)
         {
             Nome = nome;
             Documento = documento;
