@@ -5,7 +5,7 @@ using Clientes.Dominio.ObjetosDeValor;
 using FluentValidation;
 using MediatR;
 
-namespace Clientes.Aplicacao.Commands;
+namespace Clientes.Aplicacao.Commands.CreateCliente;
 
 public class CreateClienteCommandHandler : IRequestHandler<CreateClienteCommand, Result<CreateClienteResponse>>
 {
@@ -37,6 +37,6 @@ public class CreateClienteCommandHandler : IRequestHandler<CreateClienteCommand,
 
 
         var response = new CreateClienteResponse(cliente.Id);
-        return Result<CreateClienteResponse>.Success((CreateClienteResponse)response, "Product created successfully.");
+        return Result<CreateClienteResponse>.Success(response, "Product created successfully.");
     }
 }

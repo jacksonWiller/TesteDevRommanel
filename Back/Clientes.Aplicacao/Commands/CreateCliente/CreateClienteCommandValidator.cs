@@ -1,10 +1,7 @@
 ﻿using FluentValidation;
-using Clientes.Aplicacao.Commands;
-using System;
-using System.Text.RegularExpressions;
 using Clientes.Dominio.ObjetosDeValor;
 
-namespace Clientes.Aplicacao.Commands
+namespace Clientes.Aplicacao.Commands.CreateCliente
 {
     internal class CreateClienteCommandValidator : AbstractValidator<CreateClienteCommand>
     {
@@ -16,7 +13,8 @@ namespace Clientes.Aplicacao.Commands
 
             RuleFor(c => c.Documento)
                 .NotEmpty().WithMessage("O documento é obrigatório")
-                .Must((command, documento) => {
+                .Must((command, documento) =>
+                {
                     return command.TipoDocumento == TipoDocumento.CPF
                         ? ValidarCPF(documento)
                         : ValidarCNPJ(documento);
@@ -35,9 +33,11 @@ namespace Clientes.Aplicacao.Commands
             RuleFor(c => c.DataNascimento)
                 .NotEmpty().WithMessage("A data de nascimento é obrigatória");
 
-            When(c => c.TipoDocumento == TipoDocumento.CPF, () => {
+            When(c => c.TipoDocumento == TipoDocumento.CPF, () =>
+            {
                 RuleFor(c => c.DataNascimento)
-                    .Must(dataNascimento => {
+                    .Must(dataNascimento =>
+                    {
                         var idade = DateTime.Today.Year - dataNascimento.Year;
                         if (dataNascimento.Date > DateTime.Today.AddYears(-idade))
                             idade--;
@@ -45,7 +45,8 @@ namespace Clientes.Aplicacao.Commands
                     }).WithMessage("Cliente deve ter pelo menos 18 anos");
             });
 
-            When(c => c.TipoDocumento == TipoDocumento.CNPJ, () => {
+            When(c => c.TipoDocumento == TipoDocumento.CNPJ, () =>
+            {
                 RuleFor(c => c.InscricaoEstadual)
                     .NotEmpty()
                     .When(c => !c.Isento)
@@ -133,7 +134,7 @@ namespace Clientes.Aplicacao.Commands
 
             for (int i = 0; i < 12; i++)
                 soma += int.Parse(tempCnpj[i].ToString()) * multiplicador1[i];
-            resto = (soma % 11);
+            resto = soma % 11;
             resto = resto < 2 ? 0 : 11 - resto;
             digito = resto.ToString();
             tempCnpj += digito;
@@ -141,7 +142,7 @@ namespace Clientes.Aplicacao.Commands
             soma = 0;
             for (int i = 0; i < 13; i++)
                 soma += int.Parse(tempCnpj[i].ToString()) * multiplicador2[i];
-            resto = (soma % 11);
+            resto = soma % 11;
             resto = resto < 2 ? 0 : 11 - resto;
             digito += resto.ToString();
 

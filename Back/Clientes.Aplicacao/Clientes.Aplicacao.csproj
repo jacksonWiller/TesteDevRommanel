@@ -18,10 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Cliente.Dominio\Clientes.Dominio.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Queries\" />
+    <ProjectReference Include="..\Clientes.Infra\Clientes.Infra.csproj" />
   </ItemGroup>
 
 </Project>
