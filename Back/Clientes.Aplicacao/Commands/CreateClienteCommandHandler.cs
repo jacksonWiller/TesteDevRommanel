@@ -1,6 +1,6 @@
 ﻿using Ardalis.Result;
 using Ardalis.Result.FluentValidation;
-using Clientes.Dominio.Entidade;
+using Clientes.Dominio.Entidades;
 using Clientes.Dominio.ObjetosDeValor;
 using FluentValidation;
 using MediatR;

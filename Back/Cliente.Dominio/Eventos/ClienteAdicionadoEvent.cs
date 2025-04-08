@@ -1,13 +1,9 @@
-﻿using Clientes.Dominio.Entidade;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Clientes.Dominio.Entidades;
 
 namespace Clientes.Dominio.Eventos
 {
-    public class AdicionandoClienteEvent(Cliente cliente) : ClienteBaseEvent(cliente)
+    public class AdicionandoClienteEvent(Cliente cliente) : EventoBase
     {
+        public Cliente Cliente { get; } = cliente;
     }
 }

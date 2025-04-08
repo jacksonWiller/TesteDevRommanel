@@ -1,4 +1,4 @@
-﻿using Clientes.Dominio.Entidade;
+﻿using Clientes.Dominio.Entidades;
 using Clientes.Dominio.ObjetosDeValor;
 using FluentValidation;
 

@@ -1,4 +1,4 @@
-﻿namespace Clientes.Dominio.Entidade
+﻿namespace Clientes.Dominio.Entidades
 {
     public class Endereco
     {
