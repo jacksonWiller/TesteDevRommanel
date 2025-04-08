@@ -1,7 +1,10 @@
-﻿using Clientes.Api.Extensions;
+﻿using Ardalis.Result;
+using Clientes.Api.Extensions;
 using Clientes.Api.Models;
 using Clientes.Aplicacao.Commands.CreateCliente;
+using Clientes.Aplicacao.Commands.DeleteCliente;
 using Clientes.Aplicacao.Commands.UpadateCliente;
+using Clientes.Aplicacao.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -79,26 +82,6 @@ public class ClientesController : ControllerBase
     [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> Delete([Required] Guid id) =>
         (await _mediator.Send(new DeleteClienteCommand(id))).ToActionResult();
-
-    ///////////////////////////
-    // GET: /api/clientes/{id}
-    ///////////////////////////
-
-    /// <summary>
-    /// Obtém o cliente pelo Id.
-    /// </summary>
-    /// <response code="200">Retorna o cliente.</response>
-    /// <response code="400">Retorna lista de erros se a requisição for inválida.</response>
-    /// <response code="404">Quando nenhum cliente é encontrado pelo Id informado.</response>
-    /// <response code="500">Quando ocorre um erro interno inesperado no servidor.</response>
-    [HttpGet("{id:guid}")]
-    [Produces(MediaTypeNames.Application.Json)]
-    [ProducesResponseType(typeof(ApiResponse<GetClienteByIdQueryResponse>), StatusCodes.Status200OK)]
-    [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
-    [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status500InternalServerError)]
-    public async Task<IActionResult> GetById([Required] Guid id) =>
-        (await _mediator.Send(new GetClienteByIdQuery(id))).ToActionResult();
 
     //////////////////////
     // GET: /api/clientes
