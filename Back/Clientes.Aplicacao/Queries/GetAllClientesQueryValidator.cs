@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Clientes.Aplicacao.Queries
+﻿namespace Clientes.Aplicacao.Queries
 {
     public class GetAllClientesQueryValidator
     {

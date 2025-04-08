@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Ardalis.Result;
+using MediatR;
 
-namespace Clientes.Aplicacao.Queries
+namespace Clientes.Aplicacao.Queries;
+
+public class GetAllClientesQuery : IRequest<Result<GetAllCategorysQueryResponse>>
 {
-    public class GetAllClientesQuery
-    {
-        public string Filter { get; set; } = string.Empty;
-        public string Order { get; set; } = string.Empty;
-        public int PageNumber { get; set; } = 1;
-        public int PageSize { get; set; } = 10;
-    }
+    public string Filter { get; set; } = string.Empty;
+    public string Order { get; set; } = string.Empty;
+    public int PageNumber { get; set; } = 1;
+    public int PageSize { get; set; } = 10;
 }
