@@ -1860,6 +1860,7 @@
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Clientes.Dominio": "1.0.0",
+          "Fop": "1.0.3",
           "Microsoft.EntityFrameworkCore": "9.0.3",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.3"
         },

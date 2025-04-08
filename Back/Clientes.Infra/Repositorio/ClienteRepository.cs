@@ -1,6 +1,8 @@
 ﻿using Clientes.Dominio.Entidades;
 using Clientes.Dominio.Interfaces;
 using Clientes.Infra.Contexto;
+using Fop;
+using Fop.FopExpression;
 using Microsoft.EntityFrameworkCore;
 
 namespace Clientes.Infra.Repositorios
@@ -14,14 +16,23 @@ namespace Clientes.Infra.Repositorios
             _dataContext = dataContext;
         }
 
-        public async Task<Cliente[]> GetAllClientesAsync()
+        public async Task<IList<Cliente>> GetAllClientesAsync(
+            string filter = null,
+            string order = null,
+            int pageNumber = 1,
+            int pageSize = 10)
         {
-            IQueryable<Cliente> query = _dataContext.Clientes
-                .Include(c => c.Endereco);
+            var fopRequest = FopExpressionBuilder<Cliente>.Build(filter, order, pageNumber, pageSize);
 
-            query = query.AsNoTracking().OrderBy(c => c.Nome);
+            var (filteredClientes, count) = _dataContext.Clientes
+                .Include(c => c.Endereco)
+                .Include(c => c.Documento)
+                .Include(c => c.Email)
+                .Include(c => c.Telefone)
+                .AsNoTracking()
+                .ApplyFop(fopRequest);
 
-            return await query.ToArrayAsync();
+            return await filteredClientes.ToListAsync();
         }
 
         public async Task<Cliente[]> GetClientesByNomeAsync(string nome)
@@ -90,5 +101,9 @@ namespace Clientes.Infra.Repositorios
             await _dataContext.SaveChangesAsync();
         }
 
+        public Task<Cliente[]> GetAllClientesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
