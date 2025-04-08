@@ -1,11 +1,13 @@
 using Clientes.Infra.Contexto;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
+
 builder.Services.AddDbContext<ClienteContext>(
-                context => context.UseSqlServer(Configuration.GetConnectionString("SqlServer"))
-            );
+    context => context.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"))
+);
 
 builder.Services.AddControllers();
 
