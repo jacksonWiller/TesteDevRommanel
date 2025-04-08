@@ -11,16 +11,6 @@ namespace Clientes.Aplicacao.Commands.CreateCliente
                 .NotEmpty().WithMessage("O nome é obrigatório")
                 .Length(2, 200).WithMessage("O nome deve ter entre 2 e 200 caracteres");
 
-            RuleFor(c => c.Documento)
-                .NotEmpty().WithMessage("O documento é obrigatório")
-                .Must((command, documento) =>
-                {
-                    return command.TipoDocumento == TipoDocumento.CPF
-                        ? ValidarCPF(documento)
-                        : ValidarCNPJ(documento);
-                }).WithMessage(c => c.TipoDocumento == TipoDocumento.CPF
-                    ? "CPF inválido"
-                    : "CNPJ inválido");
 
             RuleFor(c => c.Email)
                 .NotEmpty().WithMessage("O e-mail é obrigatório")

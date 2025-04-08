@@ -35,23 +35,23 @@ namespace Clientes.Aplicacao.Commands.UpadateCliente
                 return Result.NotFound($"Cliente com ID {command.Id} não encontrado");
             }
 
-            //if (cliente.Documento.Numero != command.Documento)
-            //{
-            //    var clienteExistente = await _clienteRepository.GetClienteByDocumentoAsync(command.Documento);
-            //    if (clienteExistente != null && clienteExistente.Id != command.Id)
-            //    {
-            //        return Result.Error("Já existe um cliente com este documento");
-            //    }
-            //}
+            if (cliente.Documento.Numero != command.Documento)
+            {
+                var clienteExistente = await _clienteRepository.GetClienteByDocumentoAsync(command.Documento);
+                if (clienteExistente != null && clienteExistente.Id != command.Id)
+                {
+                    return Result.Error("Já existe um cliente com este documento");
+                }
+            }
 
-            //if (cliente.Email.Endereco != command.Email)
-            //{
-            //    var clienteExistente = await _clienteRepository.GetClienteByEmailAsync(command.Email);
-            //    if (clienteExistente != null && clienteExistente.Id != command.Id)
-            //    {
-            //        return Result.Error("Já existe um cliente com este e-mail");
-            //    }
-            //}
+            if (cliente.Email.Endereco != command.Email)
+            {
+                var clienteExistente = await _clienteRepository.GetClienteByEmailAsync(command.Email);
+                if (clienteExistente != null && clienteExistente.Id != command.Id)
+                {
+                    return Result.Error("Já existe um cliente com este e-mail");
+                }
+            }
 
             var documento = new Documento(command.Documento, command.TipoDocumento);
             var telefone = new Telefone(command.Telefone);
@@ -71,7 +71,7 @@ namespace Clientes.Aplicacao.Commands.UpadateCliente
             );
 
 
-            //await _clienteRepository.AtualizarAsync(cliente);
+            await _clienteRepository.AtualizarAsync(cliente);
 
             var response = new UpdateClienteResponse(cliente.Id);
             return Result<UpdateClienteResponse>.Success(response, "Product created successfully.");
