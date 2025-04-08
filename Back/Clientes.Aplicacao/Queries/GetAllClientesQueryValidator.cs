@@ -1,10 +1,25 @@
-﻿namespace Clientes.Aplicacao.Queries
+﻿using FluentValidation;
+
+namespace Clientes.Aplicacao.Queries;
+
+public class GetAllClientesQueryValidator : AbstractValidator<GetAllClientesQuery>
 {
-    public class GetAllClientesQueryValidator
+    public GetAllClientesQueryValidator()
     {
-        public string Filter { get; set; } = string.Empty;
-        public string Order { get; set; } = string.Empty;
-        public int PageNumber { get; set; } = 1;
-        public int PageSize { get; set; } = 10;
+        RuleFor(x => x.PageNumber)
+            .GreaterThan(0)
+            .WithMessage("O número da página deve ser maior que zero");
+
+        RuleFor(x => x.PageSize)
+            .GreaterThan(0)
+            .WithMessage("O tamanho da página deve ser maior que zero");
+
+        RuleFor(x => x.Filter)
+            .MaximumLength(500)
+            .WithMessage("O filtro não pode exceder 500 caracteres");
+
+        RuleFor(x => x.Order)
+            .MaximumLength(100)
+            .WithMessage("A ordenação não pode exceder 100 caracteres");
     }
 }

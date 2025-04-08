@@ -23,7 +23,6 @@ public class GetAllClientesQueryHandler : IRequestHandler<GetAllClientesQuery, R
 
     public async Task<Result<GetAllClientesQueryResponse>> Handle(GetAllClientesQuery request, CancellationToken cancellationToken)
     {
-
         var validationResult = await _validator.ValidateAsync(request, cancellationToken);
         if (!validationResult.IsValid)
         {

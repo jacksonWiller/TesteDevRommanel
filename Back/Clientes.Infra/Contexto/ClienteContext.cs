@@ -2,103 +2,100 @@
 using Clientes.Dominio.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Clientes.Infra.Contexto
+namespace Clientes.Infra.Contexto;
+
+public class ClienteContext(DbContextOptions<ClienteContext> dbOptions) : BaseDbContext<ClienteContext>(dbOptions), IClienteContext
 {
-    public class ClienteContext : DbContext, IClienteContext
+    public DbSet<Cliente> Clientes { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        public ClienteContext(DbContextOptions<ClienteContext> options) : base(options) { }
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(ClienteContext).Assembly);
 
-        public DbSet<Cliente> Clientes { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        modelBuilder.Entity<Cliente>(e =>
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ClienteContext).Assembly);
+            e.HasKey(c => c.Id);
 
-            modelBuilder.Entity<Cliente>(e =>
+            e.Property(c => c.Nome)
+                .IsRequired()
+                .HasMaxLength(200);
+
+            e.Property(c => c.DataNascimento)
+                .IsRequired();
+
+            e.Property(c => c.InscricaoEstadual)
+                .HasMaxLength(20);
+
+            e.Property(c => c.Isento)
+                .IsRequired();
+
+
+            e.OwnsOne(c => c.Email, email =>
             {
-                e.HasKey(c => c.Id);
+                email.Property(e => e.Endereco)
+                    .HasColumnName("Email")
+                    .IsRequired()
+                    .HasMaxLength(256);
+            });
 
-                e.Property(c => c.Nome)
+            e.OwnsOne(c => c.Documento, doc =>
+            {
+                doc.Property(d => d.Numero)
+                    .HasColumnName("Documento")
+                    .IsRequired()
+                    .HasMaxLength(14);
+
+                doc.Property(d => d.Tipo)
+                    .HasColumnName("TipoDocumento")
+                    .IsRequired();
+            });
+
+            e.OwnsOne(c => c.Telefone, tel =>
+            {
+                tel.Property(t => t.Numero)
+                    .HasColumnName("Telefone")
+                    .IsRequired()
+                    .HasMaxLength(11);
+            });
+
+            e.OwnsOne(c => c.Endereco, end =>
+            {
+                end.Property(e => e.Cep)
+                    .HasColumnName("Cep")
+                    .IsRequired()
+                    .HasMaxLength(8);
+
+                end.Property(e => e.Logradouro)
+                    .HasColumnName("Logradouro")
                     .IsRequired()
                     .HasMaxLength(200);
 
-                e.Property(c => c.DataNascimento)
-                    .IsRequired();
+                end.Property(e => e.Numero)
+                    .HasColumnName("Numero")
+                    .IsRequired()
+                    .HasMaxLength(10);
 
-                e.Property(c => c.InscricaoEstadual)
-                    .HasMaxLength(20);
+                end.Property(e => e.Bairro)
+                    .HasColumnName("Bairro")
+                    .IsRequired()
+                    .HasMaxLength(100);
 
-                e.Property(c => c.Isento)
-                    .IsRequired();
+                end.Property(e => e.Cidade)
+                    .HasColumnName("Cidade")
+                    .IsRequired()
+                    .HasMaxLength(100);
 
-
-                e.OwnsOne(c => c.Email, email =>
-                {
-                    email.Property(e => e.Endereco)
-                        .HasColumnName("Email")
-                        .IsRequired()
-                        .HasMaxLength(256);
-                });
-
-                e.OwnsOne(c => c.Documento, doc =>
-                {
-                    doc.Property(d => d.Numero)
-                        .HasColumnName("Documento")
-                        .IsRequired()
-                        .HasMaxLength(14);
-
-                    doc.Property(d => d.Tipo)
-                        .HasColumnName("TipoDocumento")
-                        .IsRequired();
-                });
-
-                e.OwnsOne(c => c.Telefone, tel =>
-                {
-                    tel.Property(t => t.Numero)
-                        .HasColumnName("Telefone")
-                        .IsRequired()
-                        .HasMaxLength(11);
-                });
-
-                e.OwnsOne(c => c.Endereco, end =>
-                {
-                    end.Property(e => e.Cep)
-                        .HasColumnName("Cep")
-                        .IsRequired()
-                        .HasMaxLength(8);
-
-                    end.Property(e => e.Logradouro)
-                        .HasColumnName("Logradouro")
-                        .IsRequired()
-                        .HasMaxLength(200);
-
-                    end.Property(e => e.Numero)
-                        .HasColumnName("Numero")
-                        .IsRequired()
-                        .HasMaxLength(10);
-
-                    end.Property(e => e.Bairro)
-                        .HasColumnName("Bairro")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    end.Property(e => e.Cidade)
-                        .HasColumnName("Cidade")
-                        .IsRequired()
-                        .HasMaxLength(100);
-
-                    end.Property(e => e.Estado)
-                        .HasColumnName("Estado")
-                        .IsRequired()
-                        .HasMaxLength(2);
-                });
-
-
-                e.HasIndex("Documento").IsUnique();
-
-                e.HasIndex("Email").IsUnique();
+                end.Property(e => e.Estado)
+                    .HasColumnName("Estado")
+                    .IsRequired()
+                    .HasMaxLength(2);
             });
-        }
 
+
+            e.HasIndex("Documento").IsUnique();
+
+            e.HasIndex("Email").IsUnique();
+        });
     }
+
 }
