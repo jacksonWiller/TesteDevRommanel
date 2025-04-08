@@ -541,9 +541,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Cliente.Api\\Cliente.Api.csproj",
-      "projectName": "Cliente.Api",
-      "projectPath": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Cliente.Api\\Cliente.Api.csproj",
+      "projectUniqueName": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Cliente.Api\\Clientes.Api.csproj",
+      "projectName": "Clientes.Api",
+      "projectPath": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Cliente.Api\\Clientes.Api.csproj",
       "packagesPath": "C:\\Users\\jacks\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\jacks\\Desktop\\TesteDevRommanel\\Back\\Cliente.Api\\obj\\",
       "projectStyle": "PackageReference",
