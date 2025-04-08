@@ -1,6 +1,6 @@
-﻿using Cliente.Dominio.ObjetosDeValor;
+﻿using Clientes.Dominio.ObjetosDeValor;
 
-namespace Cliente.Dominio.Entidade
+namespace Clientes.Dominio.Entidade
 {
     public class Cliente
     {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Cliente.Dominio.Entidade
+﻿namespace Clientes.Dominio.Entidade
 {
     public class Endereco
     {
@@ -15,7 +9,7 @@ namespace Cliente.Dominio.Entidade
         public string Cidade { get; private set; }
         public string Estado { get; private set; }
 
-        protected Endereco() { }
+        public Endereco() { }
 
         public Endereco(string cep, string logradouro, string numero, string bairro, string cidade, string estado)
         {
