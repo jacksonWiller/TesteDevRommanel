@@ -77,5 +77,15 @@ namespace Clientes.Infra.Repositorios
             return await _dataContext.Clientes
                 .AnyAsync(c => c.Email.Endereco == email);
         }
+
+        public async Task AdicionarAsync(Cliente cliente)
+        {
+            _dataContext.Clientes.Add(cliente);
+        }
+
+        public async Task AtualizarAsync(Cliente cliente)
+        {
+            _dataContext.Clientes.Update(cliente);
+        }
     }
 }

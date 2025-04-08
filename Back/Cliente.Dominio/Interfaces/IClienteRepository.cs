@@ -11,5 +11,7 @@ namespace Clientes.Dominio.Interfaces
         Task<Cliente> GetClienteByEmailAsync(string email);
         Task<bool> ExisteClienteComDocumentoAsync(string documento);
         Task<bool> ExisteClienteComEmailAsync(string email);
+        Task AdicionarAsync(Cliente cliente);
+        Task AtualizarAsync(Cliente cliente);
     }
 }
