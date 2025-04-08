@@ -1,5 +1,11 @@
+using Clientes.Infra.Contexto;
+
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddDbContext<ClienteContext>(
+                context => context.UseSqlServer(Configuration.GetConnectionString("SqlServer"))
+            );
 
 builder.Services.AddControllers();
 
