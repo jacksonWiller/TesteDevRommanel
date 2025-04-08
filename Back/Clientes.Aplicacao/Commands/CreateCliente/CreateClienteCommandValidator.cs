@@ -3,7 +3,7 @@ using Clientes.Dominio.ObjetosDeValor;
 
 namespace Clientes.Aplicacao.Commands.CreateCliente
 {
-    internal class CreateClienteCommandValidator : AbstractValidator<CreateClienteCommand>
+    public class CreateClienteCommandValidator : AbstractValidator<CreateClienteCommand>
     {
         public CreateClienteCommandValidator()
         {

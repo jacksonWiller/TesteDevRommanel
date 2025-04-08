@@ -1,9 +1,10 @@
 ﻿using Clientes.Dominio.Entidades;
+using Clientes.Dominio.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Clientes.Infra.Contexto
 {
-    public class ClienteContext : DbContext
+    public class ClienteContext : DbContext, IClienteContext
     {
         public ClienteContext(DbContextOptions<ClienteContext> options) : base(options) { }
 
@@ -29,6 +30,7 @@ namespace Clientes.Infra.Contexto
 
                 e.Property(c => c.Isento)
                     .IsRequired();
+
 
                 e.OwnsOne(c => c.Email, email =>
                 {

@@ -5,7 +5,7 @@ using IResult = Ardalis.Result.IResult;
 
 namespace Clientes.Api.Extensions;
 
-internal static class ResultExtensions
+public static class ResultExtensions
 {
     /// <summary>
     /// Converts a custom Result object to an IActionResult.

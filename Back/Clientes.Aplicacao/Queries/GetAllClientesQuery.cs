@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Clientes.Aplicacao.Queries;
 
-public class GetAllClientesQuery : IRequest<Result<GetAllCategorysQueryResponse>>
+public class GetAllClientesQuery : IRequest<Result<GetAllClientesQueryResponse>>
 {
     public string Filter { get; set; } = string.Empty;
     public string Order { get; set; } = string.Empty;

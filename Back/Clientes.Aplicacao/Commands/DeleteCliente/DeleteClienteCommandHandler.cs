@@ -31,9 +31,9 @@ public class DeleteClienteCommandHandler : IRequestHandler<DeleteClienteCommand,
             return Result.NotFound($"Cliente com ID {command.Id} não encontrado");
         }
 
-        await _clienteRepository.RemoverAsync(command.Id);
+        //await _clienteRepository.RemoverAsync(command.Id);
 
-        var response = new DeleteProductResponse(product.Id);
+        var response = new DeleteClienteResponse(cliente.Id);
         return Result<DeleteClienteResponse>.Success((DeleteClienteResponse)response, "Product created successfully.");
     }
 
