@@ -13,6 +13,7 @@ namespace Clientes.Dominio.Entidades
         public Endereco Endereco { get; private set; }
         public string InscricaoEstadual { get; private set; }
         public bool Isento { get; private set; }
+        public bool Removido { get; private set; } = false;
 
         protected Cliente() { }
 
@@ -44,6 +45,8 @@ namespace Clientes.Dominio.Entidades
             InscricaoEstadual = inscricaoEstadual;
             Isento = isento;
         }
+
+        public void Remover() => Removido = true;
 
     }
 }

@@ -5,11 +5,6 @@ using Clientes.Dominio.Interfaces;
 using Clientes.Dominio.ObjetosDeValor;
 using FluentValidation;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Clientes.Aplicacao.Commands.UpadateCliente
 {
@@ -34,7 +29,6 @@ namespace Clientes.Aplicacao.Commands.UpadateCliente
                 return Result.Invalid(validationResult.AsErrors());
             }
 
-            // Verificar se o cliente existe
             var cliente = await _clienteRepository.GetClienteByIdAsync(command.Id);
             if (cliente == null)
             {
