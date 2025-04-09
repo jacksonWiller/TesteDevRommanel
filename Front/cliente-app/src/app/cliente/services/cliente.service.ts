@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 
 import { Observable } from "rxjs";
 import { catchError, map } from "rxjs/operators";
@@ -12,14 +12,36 @@ export class ClienteService extends BaseService {
 
     constructor(private http: HttpClient) { super() }
 
-    public UrlServiceV1: string = "http://localhost:5103/api/";
+    public UrlServiceV1: string = "https://localhost:44379/api/";
 
-    obterTodos(): Observable<ApiResponse<ClientesResponse>> {
-        return this.http
-            .get<ApiResponse<ClientesResponse>>("https://localhost:44379/api/Clientes?Filter=Nome~%3DSilva&Order=Nome&PageNumber=1&PageSize=10", super.ObterAuthHeaderJson())
-            .pipe(
-                catchError(super.serviceError)
-            );
+    obterTodos(pageNumber: number = 1, 
+      pageSize: number = 5, 
+      orderBy: string = 'Nome',
+      filter: string = ''): Observable<ApiResponse<ClientesResponse>> {
+
+    let params = new HttpParams()
+      .set('PageNumber', pageNumber.toString())
+      .set('PageSize', pageSize.toString());
+
+    if (orderBy) {
+      params = params.set('Order', orderBy);
+    }
+
+    if (filter) {
+      params = params.set('Filter', filter);
+    }
+
+    return this.http
+      .get<ApiResponse<ClientesResponse>>(
+          `${this.UrlServiceV1}clientes`, 
+          { 
+              ...super.ObterAuthHeaderJson(), 
+              params 
+          }
+      )
+      .pipe(
+          catchError(super.serviceError)
+      );
     }
 
     obterPorId(id: string): Observable<Cliente> {

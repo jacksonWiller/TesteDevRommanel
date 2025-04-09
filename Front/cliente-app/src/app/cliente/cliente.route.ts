@@ -11,9 +11,8 @@ import { ClienteGuard } from './services/cliente.guard';
 
 const clienteRouterConfig: Routes = [
     {
-        path: '', component: ClienteAppComponent,
+        path: '', component: ListaComponent,
         children: [
-            { path: '', component: ListaComponent },
             {
                 path: 'novo', component: NovoComponent,
             },

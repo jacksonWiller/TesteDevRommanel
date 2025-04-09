@@ -1,21 +1,23 @@
 <p-toolbar styleClass="mb-4 gap-2">
     <ng-template pTemplate="left">
-        <button pButton pRipple label="Novo" icon="pi pi-plus" class="p-button-success mr-2" routerLink="/clientes/listar"></button>
-        <button pButton pRipple label="Excluir" icon="pi pi-trash" class="p-button-danger" [disabled]="!selectedClientes || !selectedClientes.length"></button>
+        <button pButton pRipple label="Novo" icon="pi pi-plus" class="p-button-success mr-2" routerLink="/clientes/novo"></button>
     </ng-template>
 </p-toolbar>
 
 <div fxShow="true" fxHide.lt-md class="card">
-    <p-table #dt [value]="clientes"
-    dataKey="id"
+    <p-table 
+    #dt
+    [value]="clientes" 
+    [paginator]="false"
+    [rows]="pageSize" 
+    [sortField]="sortField"
+    [sortOrder]="sortOrder"
+    (onSort)="onSort($event)"
+    styleClass="p-datatable-gridlines p-datatable-sm"
     [rowHover]="true"
-    [rows]="10"
     [showCurrentPageReport]="true"
-    [paginator]="true"
-    currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
-    [filterDelay]="0"
-    [globalFilterFields]="['nome', 'documento', 'email', 'cidade']" 
-    [tableStyle]="{'min-width': '60rem'}">
+    [globalFilterFields]="['nome', 'documento', 'email', 'telefone', 'cidade', 'estado']"
+  >
         <ng-template pTemplate="caption">
             <div class="flex align-items-center justify-content-between">
                 Clientes
@@ -59,122 +61,13 @@
             </tr>
         </ng-template>
         <ng-template pTemplate="summary">
-            <div class="flex align-items-center justify-content-between">
-                Total de {{ clientes ? clientes.length : 0 }} clientes.
-            </div>
+            <p-paginator 
+                [rows]="pageSize" 
+                [totalRecords]="totalRecords" 
+                [first]="(currentPage-1) * pageSize"
+                (onPageChange)="onPageChange($event)"
+                [rowsPerPageOptions]="[5, 10, 25, 50]">
+            </p-paginator>
         </ng-template>
     </p-table>
 </div>
-
-<p-dialog header="Cadastro de Cliente" [(visible)]="visible">
-
-
-
-                                <form [formGroup]="clienteForm" (ngSubmit)="adicionarCliente()">
-                                    <div class="form-group">
-                                        <label class="control-label">Nome</label>
-                                        <div>
-                                            <input class="form-control" id="nome" type="text" placeholder="Nome (requerido)" formControlName="nome" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label">Tipo de Documento</label>
-                                        <div>
-                                            <select class="form-control" id="tipoDocumento" formControlName="tipoDocumento">
-                                                <option [ngValue]="0">CPF</option>
-                                                <option [ngValue]="1">CNPJ</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="control-label">Documento</label>
-                                        <div>
-                                            <input class="form-control" id="documento" type="text" placeholder="Documento (requerido)" formControlName="documento" />
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label">Data de Nascimento</label>
-                                        <div>
-                                            <input class="form-control" id="dataNascimento" type="date" formControlName="dataNascimento" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="control-label">Telefone</label>
-                                        <div>
-                                            <input class="form-control" id="telefone" type="text" placeholder="Telefone" formControlName="telefone" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="control-label">Email</label>
-                                        <div>
-                                            <input class="form-control" id="email" type="email" placeholder="Email" formControlName="email" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="control-label">CEP</label>
-                                        <div>
-                                            <input class="form-control" id="cep" type="text" placeholder="CEP" formControlName="cep" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="control-label">Logradouro</label>
-                                        <div>
-                                            <input class="form-control" id="logradouro" type="text" placeholder="Logradouro" formControlName="logradouro" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="control-label">Número</label>
-                                        <div>
-                                            <input class="form-control" id="numero" type="text" placeholder="Número" formControlName="numero" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="control-label">Bairro</label>
-                                        <div>
-                                            <input class="form-control" id="bairro" type="text" placeholder="Bairro" formControlName="bairro" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="control-label">Cidade</label>
-                                        <div>
-                                            <input class="form-control" id="cidade" type="text" placeholder="Cidade" formControlName="cidade" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="control-label">Estado</label>
-                                        <div>
-                                            <input class="form-control" id="estado" type="text" placeholder="Estado" formControlName="estado" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <label class="control-label">Inscrição Estadual</label>
-                                        <div>
-                                            <input class="form-control" id="inscricaoEstadual" type="text" placeholder="Inscrição Estadual" formControlName="inscricaoEstadual" />
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group form-check">
-                                        <label class="form-check-label">
-                                            <input class="form-check-input" type="checkbox" id="isento" formControlName="isento" name="isento" value="true"> Isento?
-                                        </label>
-                                    </div>
-                                    
-                                    <div class="form-group">
-                                        <input type="submit" id="cadastroCliente" value="Cadastrar" class="btn btn-primary">&nbsp;
-                                        <button type="button" class="btn btn-info" (click)="closeDialog()">Voltar</button>
-                                    </div>
-                                </form>
-
-</p-dialog>

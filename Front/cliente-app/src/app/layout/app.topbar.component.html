@@ -1,11 +1,15 @@
 <div class="layout-topbar">
-    <a class="layout-topbar-logo" routerLink="">
-        <span>Rommanel</span>
-    </a>
+
 
     <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
         <i class="pi pi-bars"></i>
     </button>
+
+    <br>
+
+    <a class="layout-topbar-logo ml-5" routerLink="clientes">
+        <span>Rommanel</span>
+    </a>
 
     <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
         <i class="pi pi-ellipsis-v"></i>
@@ -20,7 +24,7 @@
             <i class="pi pi-user"></i>
             <span>Profile</span>
         </button>
-        <button class="p-link layout-topbar-button" [routerLink]="'/documentation'">
+        <button class="p-link layout-topbar-button">
             <i class="pi pi-cog"></i>
             <span>Settings</span>
         </button>

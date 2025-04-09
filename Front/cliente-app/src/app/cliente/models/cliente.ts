@@ -22,7 +22,6 @@ export interface Cliente {
   removido?: boolean;
 }
 
-
 export class ApiResponse<T> {
   result: T;
   success: boolean;
@@ -31,6 +30,14 @@ export class ApiResponse<T> {
   errors: any[];
 }
 
+export class PagedInfo {
+  pageNumber: number;
+  pageSize: number;
+  totalPages: number;
+  totalRecords: number;
+}
+
 export class ClientesResponse {
   clientes: Cliente[];
+  pagedInfo: PagedInfo;
 }

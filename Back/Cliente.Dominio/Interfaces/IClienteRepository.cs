@@ -5,7 +5,7 @@ namespace Clientes.Dominio.Interfaces
 {
     public interface IClienteRepository
     {
-        Task<List<ClienteDto>> GetAllClientesAsync(
+        Task<(List<ClienteDto>, int)> GetAllClientesAsync(
             string filter = null, string order = null, int pageNumber = 1, int pageSize = 10);
         Task<Cliente[]> GetClientesByNomeAsync(string nome);
         Task<Cliente> GetClienteByIdAsync(Guid clienteId);

@@ -26,7 +26,7 @@ public class GetAllClientesQueryHandler : IRequestHandler<GetAllClientesQuery, R
             return Result<GetAllClientesQueryResponse>.Invalid(validationResult.AsErrors());
         }
 
-        var clientes = await _clienteRepository.GetAllClientesAsync(
+        var (clientes, totalRecords) = await _clienteRepository.GetAllClientesAsync(
             request.Filter,
             request.Order,
             request.PageNumber,
@@ -36,8 +36,8 @@ public class GetAllClientesQueryHandler : IRequestHandler<GetAllClientesQuery, R
         var pagedInfo = new PagedInfo(
                                         request.PageNumber,
                                         request.PageSize,
-                                        (int)Math.Ceiling((double)clientes.Count / request.PageSize),
-                                        clientes.Count
+                                        (int)Math.Ceiling((double)totalRecords / request.PageSize),
+                                        totalRecords
                                         );
 
         var response = new GetAllClientesQueryResponse

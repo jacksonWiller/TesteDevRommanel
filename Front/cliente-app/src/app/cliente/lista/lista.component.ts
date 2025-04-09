@@ -2,8 +2,7 @@ import { Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
 import { Cliente, TipoDocumento } from '../models/cliente';
 import { ClienteService } from '../services/cliente.service';
 import { FormBuilder, Validators, FormControlName, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Observable, fromEvent, merge } from 'rxjs';
+import { Router } from '@angular/router';;
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
@@ -19,79 +18,83 @@ export class ListaComponent implements OnInit {
   errorMessage: string;
   ref: DynamicDialogRef | undefined;
 
+  currentPage: number = 1;
+  pageSize: number = 10;
+  totalRecords: number = 0;
+  sortField: string = 'Nome';
+  sortOrder: number = 1;
+  filterValue: string = '';
+  isPageChangeTriggered: boolean = false;
+
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
   clienteForm: FormGroup;
 
   constructor(private fb: FormBuilder,
     private clienteService: ClienteService,
-    private dialogService: DialogService,
     private router: Router) { }
 
   visible: boolean = false;
 
-  showDialog() {
-      this.visible = true;
-  }
-
-  closeDialog() {
-    this.visible = false;
-  } 
-
   ObterClientes() {
     console.log('Obtendo clientes...');
-    this.clienteService.obterTodos()
-    .subscribe(
-      response => {
-        if (response && response.result && response.result.clientes) {
+    this.clienteService.obterTodos(
+      this.currentPage,
+      this.pageSize,
+      this.sortOrder === 1 ? this.sortField : `-${this.sortField}`,
+      this.filterValue
+    )
+    .subscribe({
+      next: (response) => {
+        if (response && response.result) {
           this.clientes = response.result.clientes;
+          
+          if (response.result.pagedInfo) {
+            this.totalRecords = response.result.pagedInfo.totalRecords;
+            
+            // Só atualiza currentPage e pageSize se NÃO for chamado de onPageChange
+            if (!this.isPageChangeTriggered) {
+              this.currentPage = response.result.pagedInfo.pageNumber;
+              this.pageSize = response.result.pagedInfo.pageSize;
+            }
+            
+            console.log('Total de registros:', this.totalRecords);
+          } else {
+            this.totalRecords = this.clientes.length;
+          }
         } else {
           this.errorMessage = 'Nenhum cliente encontrado';
+          this.clientes = [];
         }
+        
+        // Resetar a flag após a conclusão da requisição
+        this.isPageChangeTriggered = false;
       },
-      error => {
+      error: (error) => {
         this.errorMessage = error;
+        this.isPageChangeTriggered = false;
       }
-    );
-  } 
-
-  reloadComponent() {
-    let currentUrl = this.router.url;
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-      this.router.navigate([currentUrl]);
     });
   }
 
-  adicionarCliente() {
-    if (this.clienteForm.dirty && this.clienteForm.valid) {
-      this.cliente = Object.assign({}, this.cliente, this.clienteForm.value);
-      this.clienteService.novoCliente(this.cliente)
-        .subscribe({
-          next: (sucesso: any) => {
-            this.closeDialog();
-            this.reloadComponent();
-          },
-        });
-    }
+  onPageChange(event: any) {
+      this.currentPage = event.page + 1;
+      this.pageSize = event.rows;
+      this.ObterClientes();
+  }
+
+  onSort(event: any) {
+    this.sortField = event.field;
+    this.sortOrder = event.order;
+    this.ObterClientes();
+  }
+
+  onFilter(value: string) {
+    this.filterValue = value;
+    this.currentPage = 1;
+    this.ObterClientes();
   }
 
   ngOnInit(): void {
-    this.clienteForm = this.fb.group({
-      nome: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(200)]],
-      documento: ['', [Validators.required]],
-      tipoDocumento: [TipoDocumento.CPF],
-      dataNascimento: [''],
-      telefone: [''],
-      email: ['', [Validators.email]],
-      cep: [''],
-      logradouro: [''],
-      numero: [''],
-      bairro: [''],
-      cidade: [''],
-      estado: [''],
-      inscricaoEstadual: [''],
-      isento: [false]
-    });
-
     this.ObterClientes();
   }
 }

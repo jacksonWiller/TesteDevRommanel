@@ -17,7 +17,7 @@ namespace Clientes.Infra.Repositorios
             _dataContext = dataContext;
         }
 
-        public async Task<List<ClienteDto>> GetAllClientesAsync(
+        public async Task<(List<ClienteDto>, int)> GetAllClientesAsync(
             string filter = null,
             string order = null,
             int pageNumber = 1,
@@ -25,7 +25,7 @@ namespace Clientes.Infra.Repositorios
         {
             var fopRequest = FopExpressionBuilder<Cliente>.Build(filter, order, pageNumber, pageSize);
 
-            var (filteredClientes, count) = _dataContext.Clientes
+            var (filteredClientes, totalRecords) = _dataContext.Clientes
                 .Include(c => c.Endereco)
                 .Include(c => c.Documento)
                 .Include(c => c.Email)
@@ -56,7 +56,7 @@ namespace Clientes.Infra.Repositorios
                 Isento = c.Isento
             }).ToList();
 
-            return clientesListaDto;
+            return (clientesListaDto, totalRecords);
         }
 
         public async Task<Cliente[]> GetClientesByNomeAsync(string nome)
