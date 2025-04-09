@@ -1,6 +1,6 @@
 <p-toolbar styleClass="mb-4 gap-2">
     <ng-template pTemplate="left">
-        <button pButton pRipple label="Novo" icon="pi pi-plus" class="p-button-success mr-2" (click)="showDialog()"></button>
+        <button pButton pRipple label="Novo" icon="pi pi-plus" class="p-button-success mr-2" routerLink="/clientes/listar"></button>
         <button pButton pRipple label="Excluir" icon="pi pi-trash" class="p-button-danger" [disabled]="!selectedClientes || !selectedClientes.length"></button>
     </ng-template>
 </p-toolbar>
@@ -66,16 +66,10 @@
     </p-table>
 </div>
 
-<p-dialog header="Cadastro de Cliente" [(visible)]="visible" [modal]="true" [style]="{ width: '50rem' }" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
-    <div class="grid p-fluid">
-        <div class="col-12 md:col-12">
-            <div class="card">
-                <div class="grid p-fluid flex">
-                    <div class="container main-container">
-                        <h3>Novo Cliente</h3>
-                        <hr>
-                        <div class="row">
-                            <div class="col-md-10">
+<p-dialog header="Cadastro de Cliente" [(visible)]="visible">
+
+
+
                                 <form [formGroup]="clienteForm" (ngSubmit)="adicionarCliente()">
                                     <div class="form-group">
                                         <label class="control-label">Nome</label>
@@ -182,11 +176,5 @@
                                         <button type="button" class="btn btn-info" (click)="closeDialog()">Voltar</button>
                                     </div>
                                 </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </p-dialog>

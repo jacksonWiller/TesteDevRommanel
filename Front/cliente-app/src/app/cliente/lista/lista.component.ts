@@ -4,10 +4,12 @@ import { ClienteService } from '../services/cliente.service';
 import { FormBuilder, Validators, FormControlName, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, fromEvent, merge } from 'rxjs';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-lista',
-  templateUrl: './lista.component.html'
+  templateUrl: './lista.component.html',
+  providers: [DialogService]
 })
 export class ListaComponent implements OnInit {
 
@@ -15,12 +17,14 @@ export class ListaComponent implements OnInit {
   public cliente: Cliente;
   public selectedClientes: Cliente[];
   errorMessage: string;
+  ref: DynamicDialogRef | undefined;
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
   clienteForm: FormGroup;
 
   constructor(private fb: FormBuilder,
     private clienteService: ClienteService,
+    private dialogService: DialogService,
     private router: Router) { }
 
   visible: boolean = false;
@@ -34,6 +38,7 @@ export class ListaComponent implements OnInit {
   } 
 
   ObterClientes() {
+    console.log('Obtendo clientes...');
     this.clienteService.obterTodos()
     .subscribe(
       response => {

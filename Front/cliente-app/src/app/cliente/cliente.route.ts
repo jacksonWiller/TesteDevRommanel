@@ -13,7 +13,7 @@ const clienteRouterConfig: Routes = [
     {
         path: '', component: ClienteAppComponent,
         children: [
-            { path: 'listar', component: ListaComponent },
+            { path: '', component: ListaComponent },
             {
                 path: 'novo', component: NovoComponent,
             },
@@ -37,14 +37,6 @@ const clienteRouterConfig: Routes = [
                     cliente: ClienteResolve
                 }
             },
-            // {
-            //     path: 'excluir/:id', component: ExcluirComponent,
-            //     canActivate: [ClienteGuard],
-            //     data: [{ claim: { nome: 'Cliente', valor: 'Excluir' } }],
-            //     resolve: {
-            //         cliente: ClienteResolve
-            //     }
-            // },
         ]
     }
 ];

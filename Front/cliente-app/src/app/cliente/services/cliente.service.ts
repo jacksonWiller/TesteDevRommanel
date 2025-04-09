@@ -16,7 +16,7 @@ export class ClienteService extends BaseService {
 
     obterTodos(): Observable<ApiResponse<ClientesResponse>> {
         return this.http
-            .get<ApiResponse<ClientesResponse>>(this.UrlServiceV1 + "clientes", super.ObterAuthHeaderJson())
+            .get<ApiResponse<ClientesResponse>>("https://localhost:44379/api/Clientes?Filter=Nome~%3DSilva&Order=Nome&PageNumber=1&PageSize=10", super.ObterAuthHeaderJson())
             .pipe(
                 catchError(super.serviceError)
             );
