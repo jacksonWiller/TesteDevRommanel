@@ -25,6 +25,8 @@ export class ListaComponent implements OnInit {
   sortOrder: number = 1;
   filterValue: string = '';
   isPageChangeTriggered: boolean = false;
+  excluirClienteDialog: boolean = false;
+  clienteSelecionado: Cliente;
 
   @ViewChildren(FormControlName, { read: ElementRef }) formInputElements: ElementRef[];
   clienteForm: FormGroup;
@@ -95,6 +97,26 @@ export class ListaComponent implements OnInit {
   editarCliente(cliente: Cliente) {
     this.router.navigate(['/clientes/editar', cliente.id]);
     console.log('Editando cliente:', cliente);
+  }
+
+  confirmarExclusao(cliente: Cliente) {
+    this.clienteSelecionado = cliente;
+    this.excluirClienteDialog = true;
+  }
+
+  excluirCliente() {
+    this.clienteService.excluirCliente(this.clienteSelecionado.id)
+      .subscribe({
+        next: () => {
+          this.excluirClienteDialog = false;
+          
+          this.ObterClientes();
+          
+        },
+        error: (erro) => {
+          console.error('Erro ao excluir cliente', erro);
+        }
+      });
   }
 
   ngOnInit(): void {
