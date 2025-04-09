@@ -12,7 +12,7 @@ export class ClienteService extends BaseService {
 
     constructor(private http: HttpClient) { super() }
 
-    public UrlServiceV1: string = "https://localhost:44379/api/";
+    public UrlServiceV1: string = "http://localhost:8090/api/";
 
     obterTodos(pageNumber: number = 1, 
       pageSize: number = 5, 

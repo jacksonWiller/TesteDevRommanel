@@ -17,7 +17,7 @@ export class AppMenuComponent implements OnInit {
             {
                 label: 'Menu',
                 items: [
-                    { label: 'Lista de Clientes', icon: 'pi pi-fw pi-users', routerLink: ['/clientes/listar-todos'] },
+                    { label: 'Lista de Clientes', icon: 'pi pi-fw pi-users', routerLink: ['/clientes'] },
                 ]
             },
         ]
