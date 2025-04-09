@@ -5,7 +5,7 @@ using Clientes.Dominio.Interfaces;
 using FluentValidation;
 using MediatR;
 
-namespace Clientes.Aplicacao.Queries;
+namespace Clientes.Aplicacao.Queries.GetAllClientes;
 
 public class GetAllClientesQueryHandler : IRequestHandler<GetAllClientesQuery, Result<GetAllClientesQueryResponse>>
 {
@@ -32,7 +32,7 @@ public class GetAllClientesQueryHandler : IRequestHandler<GetAllClientesQuery, R
             request.PageNumber,
             request.PageSize
         );
-       
+
         var pagedInfo = new PagedInfo(
                                         request.PageNumber,
                                         request.PageSize,

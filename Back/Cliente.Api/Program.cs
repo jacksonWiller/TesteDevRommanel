@@ -1,5 +1,5 @@
 using Clientes.Aplicacao.Commands.CreateCliente;
-using Clientes.Aplicacao.Queries;
+using Clientes.Aplicacao.Queries.GetAllClientes;
 using Clientes.Dominio.Interfaces;
 using Clientes.Infra.Contexto;
 using Clientes.Infra.Repositorios;

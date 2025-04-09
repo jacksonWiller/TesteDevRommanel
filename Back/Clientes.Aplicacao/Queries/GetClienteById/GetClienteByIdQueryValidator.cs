@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using Clientes.Aplicacao.Queries.GetClienteById;
+using FluentValidation;
 
 namespace Clientes.Aplicacao.Queries.GetProductById;
 public class GetProductByIdQueryValidator : AbstractValidator<GetClienteByIdQuery>

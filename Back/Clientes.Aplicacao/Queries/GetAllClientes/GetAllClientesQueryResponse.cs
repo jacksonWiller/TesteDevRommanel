@@ -1,7 +1,7 @@
 ﻿using Ardalis.Result;
 using Clientes.Dominio.Dtos;
 
-namespace Clientes.Aplicacao.Queries;
+namespace Clientes.Aplicacao.Queries.GetAllClientes;
 
 public class GetAllClientesQueryResponse()
 {
