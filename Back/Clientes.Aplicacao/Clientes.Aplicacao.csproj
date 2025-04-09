@@ -17,8 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Cliente.Dominio\Clientes.Dominio.csproj" />
-    <ProjectReference Include="..\Clientes.Infra\Clientes.Infra.csproj" />
+    <ProjectReference Include="..\Clientes.Dominio\Clientes.Dominio.csproj" />
   </ItemGroup>
 
 </Project>

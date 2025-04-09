@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IClienteContext, ClienteContext>();
 
 builder.Services.AddDbContext<ClienteContext>(
-    context => context.UseSqlServer("Data Source=127.0.0.1,1433;Initial Catalog=Cliente;User Id=sa;Password=Admin@123;TrustServerCertificate=True;")
+    context => context.UseSqlServer("Data Source=localhost,1433;Initial Catalog=Cliente;User Id=sa;Password=Admin@123;TrustServerCertificate=True;")
 );
 
 builder.Services.AddMediatR(cfg => {
