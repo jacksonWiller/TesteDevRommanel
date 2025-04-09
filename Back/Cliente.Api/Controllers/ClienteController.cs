@@ -54,7 +54,7 @@ public class ClientesController : ControllerBase
     /// <response code="400">Retorna lista de erros se a requisição for inválida.</response>
     /// <response code="404">Quando nenhum cliente é encontrado pelo Id informado.</response>
     /// <response code="500">Quando ocorre um erro interno inesperado no servidor.</response>
-    [HttpPut]
+    [HttpPut()]
     [Consumes(MediaTypeNames.Application.Json)]
     [Produces(MediaTypeNames.Application.Json)]
     [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status200OK)]
@@ -65,8 +65,8 @@ public class ClientesController : ControllerBase
         (await _mediator.Send(command)).ToActionResult();
 
     //////////////////////////////
-    // DELETE: /api/clientes/{id}
-    //////////////////////////////
+    // DELETE: /api/clientes/
+    //////////////////////////////{id}
 
     /// <summary>
     /// Exclui o cliente pelo Id.

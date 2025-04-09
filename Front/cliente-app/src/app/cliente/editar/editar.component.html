@@ -1,7 +1,7 @@
 <div class="grid p-fluid">
     <div class="col-12">
         <div class="card">
-            <h3 class="mb-4">Novo Cliente</h3>
+            <h3 class="mb-4">Editar Cliente</h3>
             
             <div class="alert alert-danger mb-4" *ngIf="errors.length > 0">
                 <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
@@ -11,7 +11,6 @@
             </div>
             
             <form [formGroup]="clienteForm" (ngSubmit)="editarCliente()">
-                <!-- Seção: Informações Pessoais -->
                 <div class="p-card p-4 mb-4">
                     <h4 class="mb-3">Informações Pessoais</h4>
                     <div class="grid formgrid">
@@ -133,9 +132,8 @@
                     </div>
                 </div>
                 
-                <!-- Botões de ação -->
                 <div class="flex flex-column sm:flex-row gap-2">
-                    <button pButton pRipple type="submit" label="Salvar" [disabled]="!clienteForm.valid" class="p-button-success"></button>
+                    <button pButton pRipple type="submit" label="Salvar" class="p-button-success"></button>
                     <button pButton pRipple type="button" label="Voltar" class="p-button-info" routerLink="/clientes/"></button>
                 </div>
             </form>

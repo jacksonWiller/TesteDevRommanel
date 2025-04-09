@@ -45,10 +45,13 @@ export class ClienteService extends BaseService {
     }
 
     obterPorId(id: string): Observable<Cliente> {
-        return this.http
-            .get<Cliente>(this.UrlServiceV1 + "clientes/" + id)
-            .pipe(catchError(super.serviceError));
-    }
+      return this.http
+          .get<ApiResponse<Cliente>>(this.UrlServiceV1 + "clientes/" + id)
+          .pipe(
+              map(response => response.result),
+              catchError(super.serviceError)
+          );
+  }
 
     novoCliente(cliente: Cliente): Observable<Cliente> {
         return this.http
@@ -60,7 +63,7 @@ export class ClienteService extends BaseService {
 
     atualizarCliente(cliente: Cliente): Observable<Cliente> {
         return this.http
-            .put(this.UrlServiceV1 + "clientes/" + cliente.id, cliente, super.ObterAuthHeaderJson())
+            .put(this.UrlServiceV1 + "clientes/", cliente, super.ObterAuthHeaderJson())
             .pipe(
                 map(super.extractData),
                 catchError(super.serviceError));
