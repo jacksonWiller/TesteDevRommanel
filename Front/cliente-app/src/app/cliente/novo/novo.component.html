@@ -1,0 +1,128 @@
+<div class="grid p-fluid">
+    <div class="col-12 md:col-12">
+        <div class="card">
+            <h5>Novo Cliente</h5>
+            
+            <div class="alert alert-danger" *ngIf="errors.length > 0">
+                <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
+                <ul>
+                    <li *ngFor="let error of errors">{{ error }}</li>
+                </ul>
+            </div>
+            
+            <form [formGroup]="clienteForm" (ngSubmit)="adicionarCliente()">
+                <div class="grid formgrid">
+                    <div class="col-12 mb-2">
+                        <span class="p-float-label">
+                            <input id="nome" type="text" pInputText formControlName="nome">
+                            <label for="nome">Nome</label>
+                        </span>
+                        <span class="text-danger" *ngIf="displayMessage.nome">
+                            <p [innerHTML]="displayMessage.nome"></p>
+                        </span>
+                    </div>
+                    
+                    <div class="col-12 md:col-6 mb-2">
+                        <h5>Tipo de Documento</h5>
+                        <p-dropdown [options]="[{label: 'CPF', value: 0}, {label: 'CNPJ', value: 1}]" 
+                                    formControlName="tipoDocumento" 
+                                    placeholder="Selecione o tipo de documento"></p-dropdown>
+                    </div>
+                    
+                    <div class="col-12 md:col-6 mb-2">
+                        <span class="p-float-label">
+                            <input id="documento" type="text" pInputText formControlName="documento">
+                            <label for="documento">Documento</label>
+                        </span>
+                        <span class="text-danger" *ngIf="displayMessage.documento">
+                            <p [innerHTML]="displayMessage.documento"></p>
+                        </span>
+                    </div>
+                    
+                    <div class="col-12 md:col-6 mb-2">
+                        <h5>Data de Nascimento</h5>
+                        <p-calendar formControlName="dataNascimento" [showIcon]="true"></p-calendar>
+                    </div>
+                    
+                    <div class="col-12 md:col-6 mb-2">
+                        <span class="p-float-label">
+                            <input id="telefone" type="text" pInputText formControlName="telefone">
+                            <label for="telefone">Telefone</label>
+                        </span>
+                    </div>
+                    
+                    <div class="col-12 mb-2">
+                        <span class="p-float-label">
+                            <input id="email" type="email" pInputText formControlName="email">
+                            <label for="email">Email</label>
+                        </span>
+                        <span class="text-danger" *ngIf="displayMessage.email">
+                            <p [innerHTML]="displayMessage.email"></p>
+                        </span>
+                    </div>
+                    
+                    <div class="col-12 md:col-4 mb-2">
+                        <span class="p-float-label">
+                            <input id="cep" type="text" pInputText formControlName="cep">
+                            <label for="cep">CEP</label>
+                        </span>
+                    </div>
+                    
+                    <div class="col-12 md:col-8 mb-2">
+                        <span class="p-float-label">
+                            <input id="logradouro" type="text" pInputText formControlName="logradouro">
+                            <label for="logradouro">Logradouro</label>
+                        </span>
+                    </div>
+                    
+                    <div class="col-12 md:col-4 mb-2">
+                        <span class="p-float-label">
+                            <input id="numero" type="text" pInputText formControlName="numero">
+                            <label for="numero">Número</label>
+                        </span>
+                    </div>
+                    
+                    <div class="col-12 md:col-4 mb-2">
+                        <span class="p-float-label">
+                            <input id="bairro" type="text" pInputText formControlName="bairro">
+                            <label for="bairro">Bairro</label>
+                        </span>
+                    </div>
+                    
+                    <div class="col-12 md:col-4 mb-2">
+                        <span class="p-float-label">
+                            <input id="cidade" type="text" pInputText formControlName="cidade">
+                            <label for="cidade">Cidade</label>
+                        </span>
+                    </div>
+                    
+                    <div class="col-12 md:col-4 mb-2">
+                        <span class="p-float-label">
+                            <input id="estado" type="text" pInputText formControlName="estado">
+                            <label for="estado">Estado</label>
+                        </span>
+                    </div>
+                    
+                    <div class="col-12 md:col-6 mb-2">
+                        <span class="p-float-label">
+                            <input id="inscricaoEstadual" type="text" pInputText formControlName="inscricaoEstadual">
+                            <label for="inscricaoEstadual">Inscrição Estadual</label>
+                        </span>
+                    </div>
+                    
+                    <div class="col-12 md:col-6 mb-2">
+                        <div class="field-checkbox">
+                            <p-checkbox formControlName="isento" [binary]="true" inputId="isento"></p-checkbox>
+                            <label for="isento">Isento</label>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 mt-4">
+                        <button pButton pRipple type="submit" label="Cadastrar" [disabled]="!clienteForm.valid" class="p-button-success mr-2"></button>
+                        <button pButton pRipple type="button" label="Voltar" class="p-button-info" routerLink="/clientes/listar"></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

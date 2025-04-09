@@ -1,0 +1,55 @@
+<div class="container main-container">
+    <h4>Excluir {{ cliente.nome }} </h4>
+    <br>
+    <h5>Você tem certeza disso?</h5>
+
+    <div class="row">
+        <div class="col-md-6">
+            <dl>
+                <dt>Nome</dt>
+                <dd>{{ cliente.nome }}</dd>
+                
+                <dt>Documento</dt>
+                <dd>{{ cliente.documento }}</dd>
+                
+                <dt>Tipo de Documento</dt>
+                <dd>{{ cliente.tipoDocumento === 0 ? 'CPF' : 'CNPJ' }}</dd>
+                
+                <dt>Data de Nascimento</dt>
+                <dd>{{ cliente.dataNascimento | date:'dd/MM/yyyy' }}</dd>
+                
+                <dt>Telefone</dt>
+                <dd>{{ cliente.telefone }}</dd>
+                
+                <dt>Email</dt>
+                <dd>{{ cliente.email }}</dd>
+            </dl>
+        </div>
+        
+        <div class="col-md-6">
+            <dl>
+                <dt>Endereço</dt>
+                <dd>
+                    {{ cliente.logradouro }}, {{ cliente.numero }}<br>
+                    {{ cliente.bairro }}<br>
+                    {{ cliente.cidade }} - {{ cliente.estado }}<br>
+                    CEP: {{ cliente.cep }}
+                </dd>
+                
+                <dt>Inscrição Estadual</dt>
+                <dd>{{ cliente.inscricaoEstadual || 'Não informado' }}</dd>
+                
+                <dt>Isento?</dt>
+                <dd>
+                    <input [checked]="cliente.isento" class="check-box" disabled="disabled" type="checkbox">
+                </dd>
+            </dl>
+
+            <div>
+                <button pButton pRipple label="Editar" icon="pi pi-pencil" class="p-button-warning mr-2"></button>
+                <button pButton pRipple label="Voltar" icon="pi pi-arrow-left" class="p-button-info" (click)="voltar()"></button>
+                <button pButton pRipple label="Excluir" icon="pi pi-trash" class="p-button-danger ml-2" (click)="excluirCliente()"></button>
+            </div>
+        </div>
+    </div>
+</div>
