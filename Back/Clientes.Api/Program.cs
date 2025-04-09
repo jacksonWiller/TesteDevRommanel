@@ -12,7 +12,7 @@ builder.Services.AddScoped<IClienteContext, ClienteContext>();
 
 builder.Services.AddDbContext<ClienteContext>(options =>
 {
-    options.UseNpgsql("Host=postgres;Port=5434;Database=postgres;Username=postgres;Password=postgres");
+    options.UseNpgsql("Host=postgres;Port=5432;Database=postgres;Username=postgres;Password=postgres");
 });
 
 builder.Services.AddMediatR(cfg => {
