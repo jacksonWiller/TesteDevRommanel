@@ -43,10 +43,6 @@ namespace Clientes.Aplicacao.Commands.CreateCliente
                     .WithMessage("É necessário informar a Inscrição Estadual ou marcar como Isento");
             });
 
-            // Validação de endereço
-            RuleFor(c => c.Cep)
-                .NotEmpty().WithMessage("O CEP é obrigatório")
-                .Matches(@"^\d{8}$").WithMessage("CEP deve conter 8 dígitos");
 
             RuleFor(c => c.Logradouro)
                 .NotEmpty().WithMessage("O logradouro é obrigatório");

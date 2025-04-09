@@ -76,7 +76,7 @@ export class NovoComponent extends FormBaseComponent implements OnInit {
   processarSucesso(response: any) {
     this.clienteForm.reset();
     this.errors = [];
-    this.router.navigate(['/clientes/listar']);
+    this.router.navigate(['/clientes']);
   }
 
   processarFalha(fail: any) {

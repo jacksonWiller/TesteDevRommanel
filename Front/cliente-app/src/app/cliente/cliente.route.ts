@@ -11,15 +11,14 @@ import { ClienteGuard } from './services/cliente.guard';
 
 const clienteRouterConfig: Routes = [
     {
-        path: '', component: ListaComponent,
+        path: '', component: ClienteAppComponent,
         children: [
+            { path: '', component: ListaComponent },
             {
                 path: 'novo', component: NovoComponent,
             },
             {
                 path: 'editar/:id', component: EditarComponent,
-                canActivate: [ClienteGuard],
-                data: [{ claim: { nome: 'Cliente', valor: 'Atualizar' } }],
                 resolve: {
                     cliente: ClienteResolve
                 }

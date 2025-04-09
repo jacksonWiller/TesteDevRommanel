@@ -1,9 +1,9 @@
 <div class="grid p-fluid">
-    <div class="col-12 md:col-12">
+    <div class="col-12">
         <div class="card">
-            <h5>Editar Cliente - {{ cliente.nome }}</h5>
+            <h3 class="mb-4">Novo Cliente</h3>
             
-            <div class="alert alert-danger" *ngIf="errors.length > 0">
+            <div class="alert alert-danger mb-4" *ngIf="errors.length > 0">
                 <h3 id="msgRetorno">Opa! Alguma coisa não deu certo:</h3>
                 <ul>
                     <li *ngFor="let error of errors">{{ error }}</li>
@@ -11,110 +11,132 @@
             </div>
             
             <form [formGroup]="clienteForm" (ngSubmit)="editarCliente()">
-                <div class="grid formgrid">
-                    <div class="col-12 mb-2">
-                        <span class="p-float-label">
-                            <input id="nome" type="text" pInputText formControlName="nome">
-                            <label for="nome">Nome</label>
-                        </span>
+                <!-- Seção: Informações Pessoais -->
+                <div class="p-card p-4 mb-4">
+                    <h4 class="mb-3">Informações Pessoais</h4>
+                    <div class="grid formgrid">
+                        <div class="col-12 mb-3">
+                            <span class="p-float-label">
+                                <input id="nome" type="text" pInputText formControlName="nome" class="w-full">
+                                <label for="nome">Nome</label>
+                            </span>
+                        </div>
                         
-                    </div>
-                    
-                    <div class="col-12 md:col-6 mb-2">
-                        <h5>Tipo de Documento</h5>
-                        <p-dropdown [options]="[{label: 'CPF', value: 0}, {label: 'CNPJ', value: 1}]" 
-                                    formControlName="tipoDocumento" 
-                                    placeholder="Selecione o tipo de documento"></p-dropdown>
-                    </div>
-                    
-                    <div class="col-12 md:col-6 mb-2">
-                        <span class="p-float-label">
-                            <input id="documento" type="text" pInputText formControlName="documento">
-                            <label for="documento">Documento</label>
-                        </span>
+                        <div class="col-12 sm:col-6 lg:col-4 mb-3">
+                            <h5>Tipo de Documento</h5>
+                            <p-dropdown [options]="[{label: 'CPF', value: 0}, {label: 'CNPJ', value: 1}]" 
+                                        formControlName="tipoDocumento" 
+                                        class="w-full"
+                                        placeholder="Selecione o tipo de documento"></p-dropdown>
+                        </div>
                         
-                    </div>
-                    
-                    <div class="col-12 md:col-6 mb-2">
-                        <h5>Data de Nascimento</h5>
-                        <p-calendar formControlName="dataNascimento" [showIcon]="true"></p-calendar>
-                    </div>
-                    
-                    <div class="col-12 md:col-6 mb-2">
-                        <span class="p-float-label">
-                            <input id="telefone" type="text" pInputText formControlName="telefone">
-                            <label for="telefone">Telefone</label>
-                        </span>
-                    </div>
-                    
-                    <div class="col-12 mb-2">
-                        <span class="p-float-label">
-                            <input id="email" type="email" pInputText formControlName="email">
-                            <label for="email">Email</label>
-                        </span>
+                        <div class="col-12 sm:col-6 lg:col-4 mb-3">
+							<h5>Número de Documento</h5>
+                            <span class="p-float-label">
+                                <input id="documento" type="text" pInputText formControlName="documento" class="w-full">
+                                <label for="documento">Documento</label>
+                            </span>
+                        </div>
                         
-                    </div>
-                    
-                    <div class="col-12 md:col-4 mb-2">
-                        <span class="p-float-label">
-                            <input id="cep" type="text" pInputText formControlName="cep">
-                            <label for="cep">CEP</label>
-                        </span>
-                    </div>
-                    
-                    <div class="col-12 md:col-8 mb-2">
-                        <span class="p-float-label">
-                            <input id="logradouro" type="text" pInputText formControlName="logradouro">
-                            <label for="logradouro">Logradouro</label>
-                        </span>
-                    </div>
-                    
-                    <div class="col-12 md:col-4 mb-2">
-                        <span class="p-float-label">
-                            <input id="numero" type="text" pInputText formControlName="numero">
-                            <label for="numero">Número</label>
-                        </span>
-                    </div>
-                    
-                    <div class="col-12 md:col-4 mb-2">
-                        <span class="p-float-label">
-                            <input id="bairro" type="text" pInputText formControlName="bairro">
-                            <label for="bairro">Bairro</label>
-                        </span>
-                    </div>
-                    
-                    <div class="col-12 md:col-4 mb-2">
-                        <span class="p-float-label">
-                            <input id="cidade" type="text" pInputText formControlName="cidade">
-                            <label for="cidade">Cidade</label>
-                        </span>
-                    </div>
-                    
-                    <div class="col-12 md:col-4 mb-2">
-                        <span class="p-float-label">
-                            <input id="estado" type="text" pInputText formControlName="estado">
-                            <label for="estado">Estado</label>
-                        </span>
-                    </div>
-                    
-                    <div class="col-12 md:col-6 mb-2">
-                        <span class="p-float-label">
-                            <input id="inscricaoEstadual" type="text" pInputText formControlName="inscricaoEstadual">
-                            <label for="inscricaoEstadual">Inscrição Estadual</label>
-                        </span>
-                    </div>
-                    
-                    <div class="col-12 md:col-6 mb-2">
-                        <div class="field-checkbox">
-                            <p-checkbox formControlName="isento" [binary]="true" inputId="isento"></p-checkbox>
-                            <label for="isento">Isento</label>
+                        <div class="col-12 lg:col-4 mb-3">
+                            <h5>Data de Nascimento</h5>
+                            <p-calendar formControlName="dataNascimento" [showIcon]="true" class="w-full"></p-calendar>
                         </div>
                     </div>
-                    
-                    <div class="col-12 mt-4">
-                        <button pButton pRipple type="submit" label="Salvar" [disabled]="!clienteForm.valid" class="p-button-success mr-2"></button>
-                        <button pButton pRipple type="button" label="Voltar" class="p-button-info" routerLink="/clientes/listar"></button>
+                </div>
+                
+                <!-- Seção: Informações de Contato -->
+                <div class="p-card p-4 mb-4">
+                    <h4 class="mb-3">Informações de Contato</h4>
+                    <div class="grid formgrid">
+                        <div class="col-12 sm:col-6 mb-3">
+                            <span class="p-float-label">
+                                <input id="telefone" type="text" pInputText formControlName="telefone" class="w-full">
+                                <label for="telefone">Telefone</label>
+                            </span>
+                        </div>
+                        
+                        <div class="col-12 sm:col-6 mb-3">
+                            <span class="p-float-label">
+                                <input id="email" type="email" pInputText formControlName="email" class="w-full">
+                                <label for="email">Email</label>
+                            </span>
+                        </div>
                     </div>
+                </div>
+                
+                <!-- Seção: Endereço -->
+                <div class="p-card p-4 mb-4">
+                    <h4 class="mb-3">Endereço</h4>
+                    <div class="grid formgrid">
+                        <div class="col-12 sm:col-4 mb-3">
+                            <span class="p-float-label">
+                                <input id="cep" type="text" pInputText formControlName="cep" class="w-full">
+                                <label for="cep">CEP</label>
+                            </span>
+                        </div>
+                        
+                        <div class="col-12 sm:col-8 mb-3">
+                            <span class="p-float-label">
+                                <input id="logradouro" type="text" pInputText formControlName="logradouro" class="w-full">
+                                <label for="logradouro">Logradouro</label>
+                            </span>
+                        </div>
+                        
+                        <div class="col-12 sm:col-4 mb-3">
+                            <span class="p-float-label">
+                                <input id="numero" type="text" pInputText formControlName="numero" class="w-full">
+                                <label for="numero">Número</label>
+                            </span>
+                        </div>
+                        
+                        <div class="col-12 sm:col-8 lg:col-4 mb-3">
+                            <span class="p-float-label">
+                                <input id="bairro" type="text" pInputText formControlName="bairro" class="w-full">
+                                <label for="bairro">Bairro</label>
+                            </span>
+                        </div>
+                        
+                        <div class="col-12 sm:col-8 lg:col-4 mb-3">
+                            <span class="p-float-label">
+                                <input id="cidade" type="text" pInputText formControlName="cidade" class="w-full">
+                                <label for="cidade">Cidade</label>
+                            </span>
+                        </div>
+                        
+                        <div class="col-12 sm:col-4 mb-3">
+                            <span class="p-float-label">
+                                <input id="estado" type="text" pInputText formControlName="estado" class="w-full">
+                                <label for="estado">Estado</label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Seção: Informações Fiscais -->
+                <div class="p-card p-4 mb-4">
+                    <h4 class="mb-3">Informações Fiscais</h4>
+                    <div class="grid formgrid">
+                        <div class="col-12 sm:col-8 mb-3">
+                            <span class="p-float-label">
+                                <input id="inscricaoEstadual" type="text" pInputText formControlName="inscricaoEstadual" class="w-full">
+                                <label for="inscricaoEstadual">Inscrição Estadual</label>
+                            </span>
+                        </div>
+                        
+                        <div class="col-12 sm:col-4 mb-3 flex align-items-center">
+                            <div class="field-checkbox">
+                                <p-checkbox formControlName="isento" [binary]="true" inputId="isento"></p-checkbox>
+                                <label for="isento" class="ml-2">Isento</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Botões de ação -->
+                <div class="flex flex-column sm:flex-row gap-2">
+                    <button pButton pRipple type="submit" label="Salvar" [disabled]="!clienteForm.valid" class="p-button-success"></button>
+                    <button pButton pRipple type="button" label="Voltar" class="p-button-info" routerLink="/clientes/"></button>
                 </div>
             </form>
         </div>

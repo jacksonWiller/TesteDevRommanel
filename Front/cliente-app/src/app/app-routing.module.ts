@@ -9,9 +9,8 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
             {
                 path: '', component: AppLayoutComponent,
                 children: [
-                    { path: '', loadChildren: () => import('./cliente/cliente.module').then(m => m.ClienteModule) },
                     {
-                        path: 'cliente',
+                        path: 'clientes',
                         loadChildren: () => import('./cliente/cliente.module')
                           .then(m => m.ClienteModule)
                     },
@@ -21,7 +20,7 @@ import { AppLayoutComponent } from "./layout/app.layout.component";
             { path: 'landing', loadChildren: () => import('./demo/components/landing/landing.module').then(m => m.LandingModule) },
             { path: 'notfound', component: NotfoundComponent },
             { path: '**', redirectTo: '/notfound' },
-        ], { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled', onSameUrlNavigation: 'reload' })
+        ])
     ],
     exports: [RouterModule]
 })

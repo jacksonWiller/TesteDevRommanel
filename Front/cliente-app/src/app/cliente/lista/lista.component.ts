@@ -19,7 +19,7 @@ export class ListaComponent implements OnInit {
   ref: DynamicDialogRef | undefined;
 
   currentPage: number = 1;
-  pageSize: number = 10;
+  pageSize: number = 5;
   totalRecords: number = 0;
   sortField: string = 'Nome';
   sortOrder: number = 1;
@@ -85,13 +85,16 @@ export class ListaComponent implements OnInit {
   onSort(event: any) {
     this.sortField = event.field;
     this.sortOrder = event.order;
-    this.ObterClientes();
   }
 
   onFilter(value: string) {
     this.filterValue = value;
     this.currentPage = 1;
-    this.ObterClientes();
+  }
+
+  editarCliente(cliente: Cliente) {
+    this.router.navigate(['/clientes/editar', cliente.id]);
+    console.log('Editando cliente:', cliente);
   }
 
   ngOnInit(): void {

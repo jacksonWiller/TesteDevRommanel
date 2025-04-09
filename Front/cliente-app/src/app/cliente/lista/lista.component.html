@@ -16,7 +16,7 @@
     styleClass="p-datatable-gridlines p-datatable-sm"
     [rowHover]="true"
     [showCurrentPageReport]="true"
-    [globalFilterFields]="['nome', 'documento', 'email', 'telefone', 'cidade', 'estado']"
+    [globalFilterFields]="['nome']"
   >
         <ng-template pTemplate="caption">
             <div class="flex align-items-center justify-content-between">
@@ -55,8 +55,8 @@
                 <td class="mat-cell">{{ cliente.cidade }}</td>
                 <td class="mat-cell">{{ cliente.estado }}</td>
                 <td class="mat-cell">
-                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2"></button>
-                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"></button>
+                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editarCliente(cliente)"></button>
+                    <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="confirmarExclusao(cliente)"></button>
                 </td>
             </tr>
         </ng-template>
@@ -70,4 +70,15 @@
             </p-paginator>
         </ng-template>
     </p-table>
+
+    <p-dialog [(visible)]="excluirClienteDialog" header="Confirmar Exclusão" [modal]="true" [style]="{width:'450px'}">
+        <div class="flex align-items-center justify-content-center">
+            <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem"></i>
+            <span *ngIf="clienteSelecionado">Tem certeza que deseja excluir o cliente <b>{{clienteSelecionado.nome}}</b>?</span>
+        </div>
+        <ng-template pTemplate="footer">
+            <button pButton pRipple icon="pi pi-times" class="p-button-text" label="Não" (click)="excluirClienteDialog = false"></button>
+            <button pButton pRipple icon="pi pi-check" class="p-button-text" label="Sim" (click)="excluirCliente()"></button>
+        </ng-template>
+    </p-dialog>
 </div>
