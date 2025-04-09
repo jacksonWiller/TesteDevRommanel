@@ -21,3 +21,11 @@ export interface Cliente {
   isento: boolean;
   removido?: boolean;
 }
+
+export class ApiResponse<T> {
+  result: T;
+  success: boolean;
+  successMessage: string;
+  statusCode: number;
+  errors: any[];
+}

@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChildren } from '@angular/core';
 import { Cliente, TipoDocumento } from '../models/cliente';
-import { ClienteService } from '../services/cliente.service';
 import { FormBuilder, Validators, FormControlName, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, fromEvent, merge } from 'rxjs';
