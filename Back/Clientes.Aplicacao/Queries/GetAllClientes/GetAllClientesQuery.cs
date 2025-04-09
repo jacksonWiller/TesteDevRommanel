@@ -1,7 +1,7 @@
 ﻿using Ardalis.Result;
 using MediatR;
 
-namespace Clientes.Aplicacao.Queries;
+namespace Clientes.Aplicacao.Queries.GetAllClientes;
 
 public class GetAllClientesQuery : IRequest<Result<GetAllClientesQueryResponse>>
 {

@@ -1,6 +1,6 @@
 ﻿using FluentValidation;
 
-namespace Clientes.Aplicacao.Queries;
+namespace Clientes.Aplicacao.Queries.GetAllClientes;
 
 public class GetAllClientesQueryValidator : AbstractValidator<GetAllClientesQuery>
 {
