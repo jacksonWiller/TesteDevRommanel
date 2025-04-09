@@ -10,9 +10,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IClienteContext, ClienteContext>();
 
-builder.Services.AddDbContext<ClienteContext>(
-    context => context.UseSqlServer("Data Source=localhost,1433;Initial Catalog=Cliente;User Id=sa;Password=Admin@123;TrustServerCertificate=True;")
-);
+builder.Services.AddDbContext<ClienteContext>(options =>
+{
+    options.UseNpgsql("Host=postgres;Port=5434;Database=postgres;Username=postgres;Password=postgres");
+});
 
 builder.Services.AddMediatR(cfg => {
     cfg.RegisterServicesFromAssembly(typeof(CreateClienteCommand).Assembly);
