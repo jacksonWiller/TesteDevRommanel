@@ -221,6 +221,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     FlexLayoutModule
   ],
   providers: [
+    MessageService,
     ClienteService,
     ClienteResolve,
     ClienteGuard

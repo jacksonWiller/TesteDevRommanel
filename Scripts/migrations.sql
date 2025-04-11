@@ -63,7 +63,7 @@ BEGIN
         "Id" uuid NOT NULL,
         "Nome" text NOT NULL,
         "DocumentoId" uuid NOT NULL,
-        "DataNascimento" timestamp with time zone,
+        "DataNascimento" timestamp with time zone NOT NULL,
         "TelefoneId" uuid NOT NULL,
         "EmailId" uuid NOT NULL,
         "EnderecoId" uuid NOT NULL,
