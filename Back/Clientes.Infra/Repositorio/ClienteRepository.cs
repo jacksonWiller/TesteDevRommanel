@@ -17,6 +17,12 @@ namespace Clientes.Infra.Repositorios
             _dataContext = dataContext;
         }
 
+        public async Task<bool> ExisteClienteComEmailAsync(string email, Guid clienteId)
+        {
+            return await _dataContext.Clientes
+                .AnyAsync(c => c.Email.Endereco == email && c.Id != clienteId && !c.Removido);
+        }
+
         public async Task<(List<ClienteDto>, int)> GetAllClientesAsync(
             string filter = null,
             string order = null,
@@ -30,6 +36,7 @@ namespace Clientes.Infra.Repositorios
                 .Include(c => c.Documento)
                 .Include(c => c.Email)
                 .Include(c => c.Telefone)
+                .Where(x => !x.Removido)
                 .AsNoTracking()
                 .ApplyFop(fopRequest);
 
@@ -65,7 +72,7 @@ namespace Clientes.Infra.Repositorios
                 .Include(c => c.Endereco);
 
             query = query.AsNoTracking().OrderBy(c => c.Nome)
-                        .Where(c => c.Nome.ToLower().Contains(nome.ToLower()));
+                        .Where(c => c.Nome.ToLower().Contains(nome.ToLower()) && !c.Removido);
 
             return await query.ToArrayAsync();
         }
@@ -76,7 +83,7 @@ namespace Clientes.Infra.Repositorios
                 .Include(c => c.Endereco);
 
             query = query.AsNoTracking()
-                        .Where(c => c.Id == clienteId);
+                        .Where(c => c.Id == clienteId && !c.Removido);
 
             return await query.FirstOrDefaultAsync();
         }
@@ -86,7 +93,7 @@ namespace Clientes.Infra.Repositorios
             IQueryable<Cliente> query = _dataContext.Clientes;
 
             query = query.AsNoTracking()
-                        .Where(c => c.Documento.Numero == documento);
+                        .Where(c => c.Documento.Numero == documento && !c.Removido);
 
             return await query.FirstOrDefaultAsync();
         }
@@ -96,7 +103,7 @@ namespace Clientes.Infra.Repositorios
             IQueryable<Cliente> query = _dataContext.Clientes;
 
             query = query.AsNoTracking()
-                        .Where(c => c.Email.Endereco == email);
+                        .Where(c => c.Email.Endereco == email && !c.Removido);
 
             return await query.FirstOrDefaultAsync();
         }
@@ -104,13 +111,13 @@ namespace Clientes.Infra.Repositorios
         public async Task<bool> ExisteClienteComDocumentoAsync(string documento)
         {
             return await _dataContext.Clientes
-                .AnyAsync(c => c.Documento.Numero == documento);
+                .AnyAsync(c => c.Documento.Numero == documento && !c.Removido);
         }
 
         public async Task<bool> ExisteClienteComEmailAsync(string email)
         {
             return await _dataContext.Clientes
-                .AnyAsync(c => c.Email.Endereco == email);
+                .AnyAsync(c => c.Email.Endereco == email && !c.Removido);
         }
 
         public async Task AdicionarAsync(Cliente cliente)

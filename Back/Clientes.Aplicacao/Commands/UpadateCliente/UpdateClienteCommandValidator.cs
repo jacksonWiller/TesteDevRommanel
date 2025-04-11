@@ -1,150 +1,210 @@
-﻿using Clientes.Dominio.ObjetosDeValor;
-using FluentValidation;
+﻿using FluentValidation;
+using Clientes.Dominio.ObjetosDeValor;
+using Clientes.Dominio.Interfaces;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Clientes.Aplicacao.Commands.UpadateCliente;
-
-public class UpdateClienteCommandValidator : AbstractValidator<UpdateClienteCommand>
+namespace Clientes.Aplicacao.Commands.UpadateCliente
 {
-    public UpdateClienteCommandValidator()
+    public class UpdateClienteCommandValidator : AbstractValidator<UpdateClienteCommand>
     {
-        RuleFor(c => c.Id)
-            .NotEmpty().WithMessage("O Id do cliente é obrigatório");
+        private readonly IClienteRepository _clienteRepository;
 
-        RuleFor(c => c.Nome)
-            .NotEmpty().WithMessage("O nome é obrigatório")
-            .Length(2, 200).WithMessage("O nome deve ter entre 2 e 200 caracteres");
+        public UpdateClienteCommandValidator(IClienteRepository clienteRepository)
+        {
+            _clienteRepository = clienteRepository;
 
-        RuleFor(c => c.Documento)
-            .NotEmpty().WithMessage("O documento é obrigatório")
-            .Must((command, documento) => {
-                return command.TipoDocumento == TipoDocumento.CPF
-                    ? ValidarCPF(documento)
-                    : ValidarCNPJ(documento);
-            }).WithMessage(c => c.TipoDocumento == TipoDocumento.CPF
-                ? "CPF inválido"
-                : "CNPJ inválido");
+            AdicionarValidacoesBasicas();
+            AdicionarValidacoesDocumento();
+            AdicionarValidacoesContato();
+            AdicionarValidacoesIdade();
+            AdicionarValidacoesInscricaoEstadual();
+            AdicionarValidacoesEndereco();
+        }
 
-        RuleFor(c => c.Email)
-            .NotEmpty().WithMessage("O e-mail é obrigatório")
-            .EmailAddress().WithMessage("E-mail em formato inválido");
+        #region Grupos de Validação
 
-        RuleFor(c => c.Telefone)
-            .NotEmpty().WithMessage("O telefone é obrigatório")
-            .Matches(@"^\d{10,11}$").WithMessage("Telefone deve conter 10 ou 11 dígitos");
+        private void AdicionarValidacoesBasicas()
+        {
+            RuleFor(c => c.Id)
+                .NotEmpty().WithMessage("O Id do cliente é obrigatório");
 
-        RuleFor(c => c.DataNascimento)
-            .NotEmpty().WithMessage("A data de nascimento é obrigatória");
+            RuleFor(c => c.Nome)
+                .NotEmpty().WithMessage("O nome é obrigatório")
+                .Length(2, 200).WithMessage("O nome deve ter entre 2 e 200 caracteres");
 
-        When(c => c.TipoDocumento == TipoDocumento.CPF, () => {
             RuleFor(c => c.DataNascimento)
-                .Must(dataNascimento => {
-                    var idade = DateTime.Today.Year - dataNascimento.Year;
-                    if (dataNascimento.Date > DateTime.Today.AddYears(-idade))
-                        idade--;
-                    return idade >= 18;
-                }).WithMessage("Cliente deve ter pelo menos 18 anos");
-        });
+                .NotEmpty().WithMessage("A data de nascimento é obrigatória");
+        }
 
-        When(c => c.TipoDocumento == TipoDocumento.CNPJ, () => {
-            RuleFor(c => c.InscricaoEstadual)
-                .NotEmpty()
-                .When(c => !c.Isento)
-                .WithMessage("É necessário informar a Inscrição Estadual ou marcar como Isento");
-        });
+        private void AdicionarValidacoesDocumento()
+        {
+            RuleFor(c => c.Documento)
+                .NotEmpty().WithMessage("O documento é obrigatório");
 
-        // Validação de endereço
-        RuleFor(c => c.Cep)
-            .NotEmpty().WithMessage("O CEP é obrigatório")
-            .Matches(@"^\d{8}$").WithMessage("CEP deve conter 8 dígitos");
+            RuleFor(c => c.Documento)
+                .Must((command, documento) => DocumentoValido(command.TipoDocumento, documento))
+                .WithMessage(c => c.TipoDocumento == TipoDocumento.CPF
+                    ? "CPF inválido"
+                    : "CNPJ inválido")
+                .When(c => !string.IsNullOrEmpty(c.Documento));
 
-        RuleFor(c => c.Logradouro)
-            .NotEmpty().WithMessage("O logradouro é obrigatório");
+        }
 
-        RuleFor(c => c.Numero)
-            .NotEmpty().WithMessage("O número é obrigatório");
+        private void AdicionarValidacoesContato()
+        {
+            RuleFor(c => c.Email)
+                .NotEmpty().WithMessage("O e-mail é obrigatório")
+                .EmailAddress().WithMessage("E-mail em formato inválido");
 
-        RuleFor(c => c.Bairro)
-            .NotEmpty().WithMessage("O bairro é obrigatório");
 
-        RuleFor(c => c.Cidade)
-            .NotEmpty().WithMessage("A cidade é obrigatória");
+            RuleFor(c => c.Telefone)
+                .NotEmpty().WithMessage("O telefone é obrigatório")
+                .Matches(@"^\d{10,11}$").WithMessage("Telefone deve conter 10 ou 11 dígitos");
+        }
 
-        RuleFor(c => c.Estado)
-            .NotEmpty().WithMessage("O estado é obrigatório")
-            .Length(2).WithMessage("O estado deve ter 2 caracteres");
-    }
+        private void AdicionarValidacoesIdade()
+        {
+            When(c => c.TipoDocumento == TipoDocumento.CPF, () =>
+            {
+                RuleFor(c => c.DataNascimento)
+                    .Must(IdadeMinima18Anos)
+                    .WithMessage("Cliente deve ter pelo menos 18 anos");
+            });
+        }
 
-    private bool ValidarCPF(string cpf)
-    {
-        cpf = new string(cpf.Where(char.IsDigit).ToArray());
+        private void AdicionarValidacoesInscricaoEstadual()
+        {
+            When(c => c.TipoDocumento == TipoDocumento.CNPJ, () =>
+            {
+                RuleFor(c => c.InscricaoEstadual)
+                    .NotEmpty()
+                    .When(c => !c.Isento)
+                    .WithMessage("É necessário informar a Inscrição Estadual ou marcar como Isento");
+            });
+        }
 
-        if (cpf.Length != 11)
-            return false;
+        private void AdicionarValidacoesEndereco()
+        {
+            RuleFor(c => c.Cep)
+                .NotEmpty().WithMessage("O CEP é obrigatório")
+                .Matches(@"^\d{8}$").WithMessage("CEP deve conter 8 dígitos");
 
-        if (cpf.Distinct().Count() == 1)
-            return false;
+            RuleFor(c => c.Logradouro)
+                .NotEmpty().WithMessage("O logradouro é obrigatório");
 
-        int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-        int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-        string tempCpf;
-        string digito;
-        int soma;
-        int resto;
+            RuleFor(c => c.Numero)
+                .NotEmpty().WithMessage("O número é obrigatório");
 
-        tempCpf = cpf.Substring(0, 9);
-        soma = 0;
+            RuleFor(c => c.Bairro)
+                .NotEmpty().WithMessage("O bairro é obrigatório");
 
-        for (int i = 0; i < 9; i++)
-            soma += int.Parse(tempCpf[i].ToString()) * multiplicador1[i];
-        resto = soma % 11;
-        resto = resto < 2 ? 0 : 11 - resto;
-        digito = resto.ToString();
-        tempCpf += digito;
+            RuleFor(c => c.Cidade)
+                .NotEmpty().WithMessage("A cidade é obrigatória");
 
-        soma = 0;
-        for (int i = 0; i < 10; i++)
-            soma += int.Parse(tempCpf[i].ToString()) * multiplicador2[i];
-        resto = soma % 11;
-        resto = resto < 2 ? 0 : 11 - resto;
-        digito += resto.ToString();
+            RuleFor(c => c.Estado)
+                .NotEmpty().WithMessage("O estado é obrigatório")
+                .Length(2).WithMessage("O estado deve ter 2 caracteres");
+        }
 
-        return cpf.EndsWith(digito);
-    }
+        #endregion
 
-    private bool ValidarCNPJ(string cnpj)
-    {
-        cnpj = new string(cnpj.Where(char.IsDigit).ToArray());
+        #region Métodos de Validação
 
-        if (cnpj.Length != 14)
-            return false;
+        private bool DocumentoValido(TipoDocumento tipo, string documento)
+        {
+            return tipo == TipoDocumento.CPF
+                ? ValidarCPF(documento)
+                : ValidarCNPJ(documento);
+        }
 
-        if (cnpj.Distinct().Count() == 1)
-            return false;
+        private bool IdadeMinima18Anos(DateTime dataNascimento)
+        {
+            var idade = DateTime.Today.Year - dataNascimento.Year;
+            if (dataNascimento.Date > DateTime.Today.AddYears(-idade))
+                idade--;
+            return idade >= 18;
+        }
 
-        int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
-        int[] multiplicador2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
-        string tempCnpj;
-        string digito;
-        int soma;
-        int resto;
+        #endregion
 
-        tempCnpj = cnpj.Substring(0, 12);
-        soma = 0;
+        #region Validadores de Documentos
 
-        for (int i = 0; i < 12; i++)
-            soma += int.Parse(tempCnpj[i].ToString()) * multiplicador1[i];
-        resto = (soma % 11);
-        resto = resto < 2 ? 0 : 11 - resto;
-        digito = resto.ToString();
-        tempCnpj += digito;
+        private bool ValidarCPF(string cpf)
+        {
+            cpf = new string(cpf.Where(char.IsDigit).ToArray());
 
-        soma = 0;
-        for (int i = 0; i < 13; i++)
-            soma += int.Parse(tempCnpj[i].ToString()) * multiplicador2[i];
-        resto = (soma % 11);
-        resto = resto < 2 ? 0 : 11 - resto;
-        digito += resto.ToString();
+            if (cpf.Length != 11)
+                return false;
 
-        return cnpj.EndsWith(digito);
+            if (cpf.Distinct().Count() == 1)
+                return false;
+
+            int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
+            string tempCpf;
+            string digito;
+            int soma;
+            int resto;
+
+            tempCpf = cpf.Substring(0, 9);
+            soma = 0;
+
+            for (int i = 0; i < 9; i++)
+                soma += int.Parse(tempCpf[i].ToString()) * multiplicador1[i];
+            resto = soma % 11;
+            resto = resto < 2 ? 0 : 11 - resto;
+            digito = resto.ToString();
+            tempCpf += digito;
+
+            soma = 0;
+            for (int i = 0; i < 10; i++)
+                soma += int.Parse(tempCpf[i].ToString()) * multiplicador2[i];
+            resto = soma % 11;
+            resto = resto < 2 ? 0 : 11 - resto;
+            digito += resto.ToString();
+
+            return cpf.EndsWith(digito);
+        }
+
+        private bool ValidarCNPJ(string cnpj)
+        {
+            cnpj = new string(cnpj.Where(char.IsDigit).ToArray());
+
+            if (cnpj.Length != 14)
+                return false;
+
+            if (cnpj.Distinct().Count() == 1)
+                return false;
+
+            int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] multiplicador2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            string tempCnpj;
+            string digito;
+            int soma;
+            int resto;
+
+            tempCnpj = cnpj.Substring(0, 12);
+            soma = 0;
+
+            for (int i = 0; i < 12; i++)
+                soma += int.Parse(tempCnpj[i].ToString()) * multiplicador1[i];
+            resto = soma % 11;
+            resto = resto < 2 ? 0 : 11 - resto;
+            digito = resto.ToString();
+            tempCnpj += digito;
+
+            soma = 0;
+            for (int i = 0; i < 13; i++)
+                soma += int.Parse(tempCnpj[i].ToString()) * multiplicador2[i];
+            resto = soma % 11;
+            resto = resto < 2 ? 0 : 11 - resto;
+            digito += resto.ToString();
+
+            return cnpj.EndsWith(digito);
+        }
+
+        #endregion
     }
 }
